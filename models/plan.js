@@ -9,7 +9,7 @@ const PlanSchema = new Schema({
 });
 
 //Setting schema to variable
-const PlanSchema = mongoose.model("Plan", PlanSchema);
+const Plan = mongoose.model("Plan", PlanSchema);
 
 //Exporting
-module.exports = PlanSchema;
+module.exports = Plan;
