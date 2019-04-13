@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const workoutController = require("../../controller/workoutController");
+const workoutController = require("../../controller/userController");
 
 router.route("/")
 .get(workoutController.findAll)
