@@ -15,9 +15,16 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 mongoose.connect(
+
 	process.env.MONGODB_URI || "mongodb://localhost:27017/finna_db",
-	{ useNewUrlParser: true }
-);
+	{ useNewUrlParser: true },
+	
+)
+let db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection:"));
+db.once("open", function(){
+	console.log("mongoose Connected")
+})
 
 app.listen(PORT, function() {
 	console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
