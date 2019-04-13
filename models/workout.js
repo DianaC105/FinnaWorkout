@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 //Generating Schema
 const workoutSchema = new Schema({
 	name: { type: String, required: true },
-	bodyPart: { type: Array, required: true},
-	description: {type: String, required: true}
+	bodyPart: { type: String, required: true},
+	description: {type: String, required: false}
 });
 
 //Setting schema to variable

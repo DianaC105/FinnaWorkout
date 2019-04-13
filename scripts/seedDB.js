@@ -5,24 +5,61 @@ mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost:27017/finna_db",
   {useNewUrlParser: true}
 );
-const legSeed = [
-  
-]
+6
 const workoutSeed = [
   {
-    name: "Chestpress"
+    name: " Seated Machine Chestpress",
+    bodyPart: "chest"
+
   },
   {
-    name: "Fly"
+    name: "Bar Bell Benchpress",
+    bodyPart: "chest"
+  },
+
+  {
+    name:"Incline Dumbbell Press",
+    bodyPart: "chest"
   },
   {
-    name:"Dips"
+    name:"Chest Dips",
+    bodyPart: "chest"
   },
   {
-    name:"pullover"
+    name:"Barbell Deadlift",
+    bodyPart:"back"
   },
   {
-    name:"benchpress"
+    name: "Wide-grip Pullups",
+    bodyPart: "back"
+  },
+  {
+    name: "Wide-grip Cable Row",
+    bodyPart: "back"
+  },
+  {
+    name:"Single-Arm Dumbbell Row",
+    bodyPart: "back"
+  },
+  {
+    name:"Tuck and Crunch",
+    bodyPart: "abs"
+  },
+  {
+    name:"Modified V-sit",
+    bodyPart: "abs"
+  },
+  {
+    name:"Hanging leg raise",
+    bodyPart: "abs"
+  },
+  {
+    name:"Hanging Knee raise",
+    bodyPart: "abs"
+  },
+  {
+    name: "The Hokie Pokie",
+    bodyPart: "Anything you can shake about"
   }
 ];
 db.Workout.remove({})
