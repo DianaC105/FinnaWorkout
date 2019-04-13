@@ -4,7 +4,7 @@ const workoutController = require("../../controller/workoutController");
 
 router.route("/")
 .get(workoutController.findAll)
-.post(workoutController.create)
+.post(workoutController.create);
 
 router.route("/:id")
   .get(workoutController.findById)
