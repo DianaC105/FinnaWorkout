@@ -1,6 +1,6 @@
 const db =require("../models");
 
-module.export = {
+module.exports ={
   findAll:function(req, res){
     db.Workout.find(req.query)
     .then(dbModel => res.json(dbModel))
@@ -31,6 +31,4 @@ module.export = {
     .then(dbModel => res.json(dbModel))
     .catch(err => json(err));
   }
-  
-
-};
+}

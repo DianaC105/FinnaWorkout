@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 //Generating Schema
 const workoutSchema = new Schema({
-	workout: { type: String, required: true },
-	bodyPart: { type: String, required: true},
+	type: { type: String, required: true },
+	bodyPart: { type: Array, required: true},
 	description: {type: String, required: true}
 });
 
