@@ -18,17 +18,17 @@
 // export default App;
 
 
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { Component } from "react";
+// import { BrowserRouter as Router} from "react-router-dom";
 // import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Wrapper from "./components/Wrapper";
 import Jumbotron from "./components/Jumbotron";
 import Form from "./components/Form";
 
-function App() {
-  return (
-    <Router>
+class App extends Component {
+  render() {
+    return (
       <div>
         <Nav />
         <Wrapper>
@@ -36,9 +36,8 @@ function App() {
           <Form />
         </Wrapper>
       </div>
-      
-    </Router>
-  );
+    );
+  }
 }
 
 export default App;
