@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 function Jumbotron({ children }) {
   return (
@@ -6,6 +7,7 @@ function Jumbotron({ children }) {
       style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center" }}
       className="jumbotron"
     >
+    HIII BOtches
       {children}
     </div>
   );
