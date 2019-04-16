@@ -21,18 +21,18 @@
 import React, { Component } from "react";
 // import { BrowserRouter as Router} from "react-router-dom";
 // import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
+import Example from "./components/Nav";
 import Wrapper from "./components/Wrapper";
 import Jumbotron from "./components/Jumbotron";
 import Form from "./components/Form";
 
 class App extends Component {
   render() {
-    return (
+    return ( 
       <div>
-        <Nav />
+        <Example />
         <Wrapper>
-          <Jumbotron />
+          <Jumbotron /> Hello World!
           <Form />
         </Wrapper>
       </div>
