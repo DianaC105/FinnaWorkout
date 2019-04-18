@@ -4,7 +4,7 @@ import WorkoutCard from "../components/WorkoutCard"
 export default class Home extends Component{
 state = {
   
-      bodyPart: [],
+      muscleGroups: [],
       workouts: [],
       plan: [],
       message: "Putting togeather you're plan now",
@@ -13,6 +13,7 @@ state = {
  
   componentDidMount(){
     this.getWorkouts()
+    this.getMuscleGroup()
   }
   
   componentDidUpdate(){
@@ -42,6 +43,29 @@ state = {
           })
         );
   };
+  getMuscleGroup = () => {
+    API.getMuscleGroup()
+    .then(res =>{
+      console.log(res.data.bodyPart, "response from database only getting the bodypart variables")
+      this.setState({
+        muscleGroups: res.data.bodyPart
+      })
+    }
+      )
+      .catch((err) => {
+
+        this.setState({
+          muscleGroup: [],
+          message:   "Muscle Group added"
+        })
+          console.log(err)
+      }
+      );
+  };
+
+ 
+
+
   render(){
     return (
       <div>
