@@ -24,16 +24,19 @@ import React, { Component } from "react";
 import Example from "./components/Nav";
 import Wrapper from "./components/Wrapper";
 import Jumbotron from "./components/Jumbotron";
-import Form from "./components/Form";
+import Home from "./pages/Home";
+// import Form from "./components/Form";
 
 class App extends Component {
+
   render() {
     return ( 
       <div>
         <Example />
         <Wrapper>
           <Jumbotron /> Hello World!
-          <Form />
+          {/* <Form /> */}
+          <Home/>
         </Wrapper>
       </div>
     );

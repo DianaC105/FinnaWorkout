@@ -30,7 +30,7 @@
 import React from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-export default class Example extends React.Component {
+export default class for extends React.Component {
   render() {
     return (
       <Form>
