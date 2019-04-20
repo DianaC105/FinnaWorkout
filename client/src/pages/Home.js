@@ -2,71 +2,70 @@ import React, {Component} from "react";
 import API from "../utils/API";
 import WorkoutCard from "../components/WorkoutCard"
 export default class Home extends Component{
+
 state = {
   
-      muscleGroups: [],
+      
       workouts: [],
       plan: [],
       message: "Putting togeather you're plan now",
-      q:""
+      q:"",
+      chestWorkouts: [],
+      backWorkouts: [],
+      legsWorkouts: [],
+      absWorkouts: [],
     };
- 
-  componentDidMount(){
-    this.getWorkouts()
-    this.getMuscleGroup()
-  }
-  
-  componentDidUpdate(){
-    console.log(this.state.workouts,"Workout Data from Backend");
-    
-  }
 
-  getMuscleGroups(array){
-    for (let i = 0; i < array.length; i ++){
-      
+    
+    filterWorkouts(){
+      let chestArray = this.filterBodyParts(this.state.workouts, "chest");
+      let legsArray = this.filterBodyParts(this.state.workouts, "legs");
+      let backArray = this.filterBodyParts(this.state.workouts, "back");
+      let absArray = this.filterBodyParts(this.state.workouts, "abs");
+      this.setState({
+        chestWorkouts: chestArray,
+        backWorkouts: backArray,
+        legsWorkouts: legsArray,
+        absWorkouts: absArray
+      })
     }
 
-  }
-  getWorkouts = () => {
-    API.getWorkouts()
+    componentDidMount(){
+      console.log("mounted")
+      this.getWorkouts()
+      
+      
+      
+    }
+    
+    filterBodyParts(array,bodyPart){
+      return array.filter(workout => workout.bodyPart === bodyPart )
+      
+    };
+    
+    getWorkouts = () => {
+      API.getWorkouts()
       .then(res =>{
-        console.log(res,"Responce json obj")
+        
         this.setState({
           workouts: res.data
         })
+        if(res.data.length > 0){
+          this.filterWorkouts()
+        }
+        
       }
-        )
-        .catch(() => 
-          this.setState({
-            plan: [],
-            message: "no plan generated"
-          })
-        );
-  };
-  getMuscleGroup = () => {
-    API.getMuscleGroup()
-    .then(res =>{
-      console.log(res.data.bodyPart, "response from database only getting the bodypart variables")
-      this.setState({
-        muscleGroups: res.data.bodyPart
-      })
-    }
       )
-      .catch((err) => {
-
-        this.setState({
-          muscleGroup: [],
-          message:   "Muscle Group added"
-        })
-          console.log(err)
-      }
+      .catch(() => 
+      this.setState({
+        plan: [],
+        message: "no plan generated"
+      })
       );
-  };
-
- 
-
-
-  render(){
+    };
+    
+    render(){
+      console.log(this.state)
     return (
       <div>
         {this.state.workouts.map(workout =>(

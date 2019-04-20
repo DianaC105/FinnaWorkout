@@ -6,8 +6,12 @@ router.route("/")
 .get(workoutController.findAll)
 .post(workoutController.create);
 
-router.route("/bodyPart")
+// router.route("/:bodyPart")
+// .get(workoutController.findBodyPart);
+
+router.route("/body-part/:bodyPart?")
 .get(workoutController.findBodyPart);
+
 
 
 router.route("/:id")
