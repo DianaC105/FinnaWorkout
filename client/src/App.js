@@ -24,11 +24,22 @@ import React, { Component } from "react";
 import { Button } from 'reactstrap';
 import Example from "./components/Nav";
 import Wrapper from "./components/Wrapper";
-import Jumbo from "./components/Jumbotron";
+import Jumbotron from "./components/Jumbotron";
+import Roulette from './components/Roulette';
+import workoutpick from "./workoutpick.json";
 import Form from "./components/Form";
+import Workoutpick from "./components/WorkoutCard";
+
 
 
 class App extends Component {
+  // Setting this.state.friends to the friends json array
+  state = {
+    workoutpick
+  };
+
+
+
   render() {
     return ( 
       <div>
@@ -36,6 +47,18 @@ class App extends Component {
         <Wrapper>
           <Jumbo /> 
           <Chart />
+          <Jumbotron /> FinnaWorkOUT
+          <Roulette />
+          {this.state.workoutpick.map(workoutpick => (
+          <Workoutpick
+            id={workoutpick.id}
+            key={workoutpick.id}
+            name={workoutpick.name}
+            image={workoutpick.image}
+            occupation={workoutpick.occupation}
+            location={workoutpick.location}
+          />
+        ))}
           <Form />
         </Wrapper>
       </div>
