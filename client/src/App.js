@@ -21,10 +21,12 @@
 import React, { Component } from "react";
 // import { BrowserRouter as Router} from "react-router-dom";
 // import NoMatch from "./pages/NoMatch";
+import { Button } from 'reactstrap';
 import Example from "./components/Nav";
 import Wrapper from "./components/Wrapper";
-import Jumbotron from "./components/Jumbotron";
+import Jumbo from "./components/Jumbotron";
 import Form from "./components/Form";
+
 
 class App extends Component {
   render() {
@@ -32,7 +34,8 @@ class App extends Component {
       <div>
         <Example />
         <Wrapper>
-          <Jumbotron /> Hello World!
+          <Jumbo /> 
+          <Chart />
           <Form />
         </Wrapper>
       </div>

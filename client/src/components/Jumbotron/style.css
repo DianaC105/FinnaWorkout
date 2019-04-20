@@ -1,3 +1,9 @@
-.jumbotron{
+.jumbotron {
  background-color: aqua;
+ color: hotpink;
+ 
+}
+body {
+    background-image: url("./aerobics-brand-color-39671.jpg");
+    background-size: cover; 
 }
