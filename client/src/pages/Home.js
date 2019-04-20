@@ -1,6 +1,11 @@
 import React, {Component} from "react";
 import API from "../utils/API";
-import WorkoutCard from "../components/WorkoutCard"
+import Example from "../components/Nav";
+import Wrapper from "../components/Wrapper";
+import Jumbotron from "../components/Jumbotron";
+import Roulette from '../components/Roulette';
+import Form from "../components/Form"
+import Workoutpick from "../components/WorkoutCard";
 export default class Home extends Component{
 
 state = {
@@ -14,6 +19,7 @@ state = {
       backWorkouts: [],
       legsWorkouts: [],
       absWorkouts: [],
+      muscleGroups: []
     };
 
     
@@ -28,6 +34,15 @@ state = {
         legsWorkouts: legsArray,
         absWorkouts: absArray
       })
+      let muscleGroups = []
+      muscleGroups.push(chestArray,backArray,legsArray,absArray)
+      console.log(muscleGroups)
+      this.setState({
+        muscleGroups: muscleGroups
+
+      })
+
+      
     }
 
     componentDidMount(){
@@ -68,16 +83,47 @@ state = {
       console.log(this.state)
     return (
       <div>
-        {this.state.workouts.map(workout =>(
-          <WorkoutCard
-          id={workout._id}
-          bodyPart={workout.bodyPart}
-          key={workout._id}
-          />
+        <Example />
+        <Wrapper>
+        <Jumbotron /> FinnaWorkOUT
+        <Roulette
+        />
+        {this.state.muscleGroups.map(muscleGroups=>(
+
+        <Workoutpick
+          id={muscleGroups.id}
+          key={muscleGroups.id}
+          name={muscleGroups.name}
+          
+        />
         ))}
+         
+        
+
+
+        {/* {this.state.workoutpick.map(workoutpick => (
+       
+        <Workoutpick
+            id={workoutpick.id}
+            key={workoutpick.id}
+            name={workoutpick.name}
+            image={workoutpick.image}
+            occupation={workoutpick.occupation}
+            location={workoutpick.location}
+          />
+        ))} */}
+        {/* <Roulette 
+          chestWorkouts={this.state.chestWorkouts} 
+          backWorkouts={this.state.backWorkouts}
+          legsWorkouts={this.state.legsWorkouts}
+          absWorkouts={this.state.absWorkouts}
+        /> */}
+        <Form />
+        </Wrapper>
       </div>
     )
   }
 }
+
 
 

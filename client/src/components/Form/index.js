@@ -31,7 +31,7 @@ import React from 'react';
 import "./style.css";
 import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-export default class for extends React.Component {
+export default class extends React.Component {
   render() {
     return (
       <Form>
