@@ -16,10 +16,10 @@
 // export default Jumbotron;
 
 import React from 'react';
-import { Jumbotron, Container } from 'reactstrap';
+// import { Jumbotron, Container } from 'reactstrap';
 import "./style.css";
 
-const Jumbotron = (props) => {
+function Jumbotron({children}) {
   return (
     <div
       style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center", backgroundImage:"https://images.pexels.com/photos/669580/pexels-photo-669580.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" }}
