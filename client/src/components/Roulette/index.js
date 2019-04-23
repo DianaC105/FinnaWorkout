@@ -7,6 +7,7 @@ class Roulette extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      chestWorkout: this.props.chestWorkouts,
       spinAngleStart: 0,
       startAngle: 0,
       spinTime: 0,
@@ -137,6 +138,8 @@ class Roulette extends React.Component {
         this.spinTimer = setTimeout(() => this.rotate(), 30);
       })
     }
+
+    console.log(this.state);
   }
 
   stopRotateWheel() {
@@ -173,7 +176,8 @@ class Roulette extends React.Component {
     return (
       <div className="roulette">
         <div className="roulette-container">
-          <canvas ref="canvas" width={baseSize * 2} height={baseSize * 2} className="roulette-canvas"></canvas>
+          <canvas ref="canvas" width={baseSize * 2} height={baseSize * 2} className="roulette-canvas">
+          </canvas>
         </div>
         <div className="roulette-container">
           <input type="button" value="spin" onClick={this.handleOnClick} className="button" id="spin" />
