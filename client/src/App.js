@@ -29,9 +29,13 @@ import Roulette from './components/Roulette';
 import workoutpick from "./workoutpick.json";
 import Form from "./components/Form";
 import Workoutpick from "./components/WorkoutCard";
-import LineChart from "./components/Chart";
-import InputForm from "./components/InputForm";
-// import {InputText} from 'primereact/inputtext';
+// import LineChart from "./components/Chart";
+// import InputForm from "./components/InputForm";
+// import Buttons from "./components/Buttons";
+// import NewChart from "./components/ChartData/NewChart";
+import BarChart from "./components/NewChart/BarChart";
+
+
 
 
 
@@ -50,7 +54,8 @@ class App extends Component {
         <Example />
         <Wrapper>
         
-          <LineChart />
+          <BarChart />
+          {/* <Buttons />  */}
           <Jumbotron /> FinnaWorkOUT
           <Roulette />
           {this.state.workoutpick.map(workoutpick => (
