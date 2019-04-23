@@ -24,8 +24,8 @@ export class BarChart extends Component {
             labels: ['Upper Body', 'Torso', 'Legs', 'Chest', 'Booty'],
             datasets: [
                 {
-                    label: 'My First dataset',
-                    backgroundColor: '#42A5F5',
+                    label: 'Workouts',
+                    backgroundColor: 'purple',
                     data: Object.values(this.state)
                 }
             ]
@@ -50,6 +50,14 @@ export class BarChart extends Component {
             }
         }
 
+        const btnStyle = {
+            backgroundColor: "green",
+            padding: 5,
+            margin: 23
+          
+                
+        }
+
         return (
             <div>
                 <div className="content-section introduction">
@@ -63,19 +71,21 @@ export class BarChart extends Component {
                     {/* Chart goes here */}
                     <Chart type="bar" data={data} options={multiAxisOptions} />
 
-                    <button color="success" onClick={() => this.handleIncrement("upperBody")} > Upper Body Completed <i className="fas fa-dumbbell"></i>
+                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("upperBody")} > Upper Body Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-                    <button color="success" onClick={() => this.handleIncrement("torso")} > Torso Completed <i className="fas fa-dumbbell"></i>
+                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("torso")} > Torso Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-                    <button color="success" onClick={() => this.handleIncrement("legs")} > Legs Completed <i className="fas fa-dumbbell"></i>
+                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("legs")} > Legs Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-                    <button color="success" onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
+                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-                    <button color="success" onClick={() => this.handleIncrement("booty")} > Booty Completed <i className="fas fa-dumbbell"></i>
+                    <button color="success" style={btnStyle}  onClick={() => this.handleIncrement("booty")} > Booty Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-
+            
                 </div>
+
             </div>
+          
         )
     }
 }
