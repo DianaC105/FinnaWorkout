@@ -56,6 +56,7 @@
 
 
 import React from 'react';
+<<<<<<< HEAD
 import { Media } from 'reactstrap';
 import homeIcon from '../images/house.jpg';
 
@@ -89,3 +90,45 @@ var arr=[ 1, 2, 3];
 _.each(arr,function(val) {
  console.log('Output from Lodash _.each for Element ' + val); 
 });
+=======
+import "./style.css";
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.toggleNavbar = this.toggleNavbar.bind(this);
+    this.state = {
+      collapsed: true
+    };
+  }
+
+  toggleNavbar() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Navbar color="faded" light>
+          <NavbarBrand href="/" className="mr-auto">reactstrap</NavbarBrand>
+          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+          <Collapse isOpen={!this.state.collapsed} navbar>
+            <Nav navbar>
+              <NavItem>
+                <NavLink href="/components/">Components</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
+    );
+  }
+}
+export default Example;
+>>>>>>> ad856fd1ec1446a6e0ac43da799a621b7f0c86d4
