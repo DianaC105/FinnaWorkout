@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 // import NoMatch from "./pages/NoMatch";
+
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Landing from "./pages/Landing";
@@ -23,6 +24,7 @@ const App = () => (
     </div>
   </Router>
 )
+
 
 export default App;
 
