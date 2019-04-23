@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Redirect} from "react-router-dom";
 import API from "../utils/API";
 import Example from "../components/Nav";
 import Wrapper from "../components/Wrapper";
@@ -10,7 +11,8 @@ export default class Home extends Component{
 
 state = {
   
-      
+      isLoggedIn: true,
+      username:"",
       workouts: [],
       plan: [],
       message: "Putting togeather you're plan now",
@@ -21,6 +23,7 @@ state = {
       absWorkouts: [],
       muscleGroups: []
     };
+    
 
     
     filterWorkouts(){
@@ -46,11 +49,25 @@ state = {
     }
 
     componentDidMount(){
-      console.log("mounted")
-      this.getWorkouts()
+      //cheecking login status
+      this.loginCheck();
+      //console.log("mounted")
       
-      
-      
+
+    }
+    loginCheck = () => {
+      API
+        .loginCheck()
+        .then(res => this.setState({
+          isLoggedIn: res.data.isLoggedIn, username: res.data.username
+        }))
+        .then(res => {
+          this.getWorkouts();
+        })
+        .catch(err => {
+          console.log(err);
+          this.setState({isLoggedIn: false})
+        })
     }
     
     filterBodyParts(array,bodyPart){
@@ -80,6 +97,9 @@ state = {
     };
     
     render(){
+      if(!this.state.isLoggedIn){
+        return <Redirect to = "/login"/>
+      }
       console.log(this.state)
     return (
       <div>
@@ -96,7 +116,11 @@ state = {
           name={muscleGroups.name}
           
         />
-        ))}
+        )
+        )
+        }
+        
+        
          
         
 

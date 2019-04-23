@@ -53,4 +53,4 @@ class Example extends React.Component {
     );
   }
 }
-export default Nav
+export default Example;
