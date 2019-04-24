@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import "./style.css";
 
-
 class Roulette extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +28,7 @@ class Roulette extends React.Component {
   };
 
   static defaultProps = {
-    options:  ['Upper Body', 'Torso', 'Legs', 'Chest', 'Booty'],
+    options:  [],
     baseSize: 150,
     spinAngleStart: Math.random() * 10 + 10,
     spinTimeTotal: Math.random() * 3 + 4 * 1000,

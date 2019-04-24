@@ -17,7 +17,7 @@ import React from 'react';
 import "./style.css";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-export default class Example extends React.Component {
+class Example extends React.Component {
   constructor(props) {
     super(props);
 
@@ -53,3 +53,4 @@ export default class Example extends React.Component {
     );
   }
 }
+export default Example;

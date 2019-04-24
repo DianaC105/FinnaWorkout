@@ -11,6 +11,11 @@ module.exports= {
     .then(dbModel => res.json(dbModel))
     .catch(err => json(err));
   },
+  findBodyPart: function(req, res){
+    db.Workout.find({bodyPart : req.params.bodyPart})
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.json(err));
+  },
   create:function(req, res){
     db.Workout.create(req.body)
     .then(dbModel => res.json(dbModel))
