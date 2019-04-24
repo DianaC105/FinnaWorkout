@@ -33,6 +33,7 @@ function Jumbotron({children}) {
 
 export default Jumbotron;
 
+
 // class Jumbotron extends Component {
 
 //   State={
@@ -81,3 +82,4 @@ export default Jumbotron;
 // }
 
 // export default Jumbotron;
+
