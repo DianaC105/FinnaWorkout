@@ -8,13 +8,13 @@ import Signup from "./pages/Signup";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 
-import Navbar from "./components/Navbar";
+
 // import Form from "./components/Form";
 
 const App = () => (
   <Router>
     <div>
-      <Navbar/>
+      
       <Switch>
         <Route exact path = "/" component ={Landing}/>
         <Route exact path="/home" component={Home} />
