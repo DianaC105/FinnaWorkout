@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Redirect} from "react-router-dom";
 import API from "../utils/API";
 import Example from "../components/Nav";
 import Wrapper from "../components/Wrapper";
@@ -8,7 +9,11 @@ import Form from "../components/Form"
 import Workoutpick from "../components/WorkoutCard";
 export default class Home extends Component{
 
-state = {   
+
+state = {
+  
+      isLoggedIn: true,
+      username:"",
       workouts: [],
       plan: [],
       message: "Putting togeather you're plan now",
@@ -22,6 +27,7 @@ state = {
       absOptionNames: [],
       mapObjects: ["chest", "back", "abs"]
 };
+
 
     
     filterWorkouts(){
@@ -91,7 +97,27 @@ state = {
     }
 
     componentDidMount(){
-      // this.updateWorkoutsByBodyPart(this.state.chestWorkouts);
+
+      //cheecking login status
+      this.loginCheck();
+      //console.log("mounted")
+      
+
+    }
+    loginCheck = () => {
+      API
+        .loginCheck()
+        .then(res => this.setState({
+          isLoggedIn: res.data.isLoggedIn, username: res.data.username
+        }))
+        .then(res => {
+          this.getWorkouts();
+        })
+        .catch(err => {
+          console.log(err);
+          this.setState({isLoggedIn: false})
+        })
+
     }
     
     filterBodyParts(array,bodyPart){
@@ -130,14 +156,16 @@ state = {
     }
 
     render(){
-      
-    
-
+      if(!this.state.isLoggedIn){
+        return <Redirect to = "/login"/>
+      }
+      console.log(this.state)
     return (
       <div>
         <Example />
         <Wrapper>
         <Jumbotron /> FinnaWorkOUT
+
         {this.state.mapObjects.map(object => (
 
           <Workoutpick

@@ -41,7 +41,7 @@ class Example extends React.Component {
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href="/logout/">Logout</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
@@ -53,4 +53,4 @@ class Example extends React.Component {
     );
   }
 }
-export default Nav
+export default Example;
