@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Chart } from 'primereact/chart';
+import API from '../../utils/API';
 
 
 export class BarChart extends Component {
@@ -11,13 +12,35 @@ export class BarChart extends Component {
         booty: 0
     };
 
-    // handleIncrement increments this.state.count by 1
+    // componentDidMount() {
+    //     this.loadStats();
+    // };
+
+    // loadStats = () => {
+    //     API.getStats()
+    //         .then(res => this.setState({
+    //             [bodyPart]: this.state[bodyPart]
+    //         }));
+    // }
+
     handleIncrement = (bodyPart) => {
-        // We always use the setState method to update a component's state
-        this.setState({ 
-            [bodyPart]: this.state[bodyPart] + 1 
+        this.setState({
+            [bodyPart]: this.state[bodyPart] + 1
         });
+        // updateData();
     };
+
+    // updateData(bodyPart) {
+    //     API.updateStats({
+    //         upperBody: [bodyPart].upperBody,
+    //         torso: [bodyPart].torso,
+    //         legs: [bodyPart].legs,
+    //         chest: [bodyPart].chest,
+    //         booty: [bodyPart].booty
+
+    //     })
+    //         .then(() => this.getStats());
+    // };
 
     render() {
         const data = {
@@ -54,8 +77,8 @@ export class BarChart extends Component {
             backgroundColor: "green",
             padding: 5,
             margin: 23
-          
-                
+
+
         }
 
         return (
@@ -79,13 +102,13 @@ export class BarChart extends Component {
                     </button> {"  "}
                     <button color="success" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-                    <button color="success" style={btnStyle}  onClick={() => this.handleIncrement("booty")} > Booty Completed <i className="fas fa-dumbbell"></i>
+                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("booty")} > Booty Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-            
+
                 </div>
 
             </div>
-          
+
         )
     }
 }

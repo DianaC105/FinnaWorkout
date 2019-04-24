@@ -5,6 +5,13 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 //Generating Schema
 const userSchema = new Schema({
+  upperBody: Number,
+  torso: Number,
+  legs: Number,
+  chest: Number,
+  booty: Number
+
+    
 	  /* 
     Define your user information fields for the schema here, DO NOT MAKE "username" and "password" fields, since passport will set those for you
 

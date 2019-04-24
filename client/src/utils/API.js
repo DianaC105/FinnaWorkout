@@ -33,5 +33,13 @@ export default {
   },
   getMuscleGroup: function(musGrop){
     return axios.get("api/workouts/" + musGrop );
+  },
+
+  getStats: function() {
+    return axios.get("api/stats");
+  },
+
+  updateStats: function() {
+    return axios.put ("api/stats");
   }
 }
