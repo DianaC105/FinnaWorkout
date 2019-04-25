@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Redirect} from "react-router-dom";
+import Navbar from "../components/Navbar";
 import API from "../utils/API";
 
 class Login extends Component {
@@ -37,6 +38,9 @@ class Login extends Component {
     }
 
     return (
+      <div>
+        <Navbar />
+     
       <div className="container my-5">
         <div className="row justify-content-center">
           <form>
@@ -68,6 +72,7 @@ class Login extends Component {
           </form>
 
         </div>
+      </div>
       </div>
     )
   }
