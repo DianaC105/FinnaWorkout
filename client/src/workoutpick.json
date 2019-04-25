@@ -1,30 +1,18 @@
 [
     {
-      "id": 1,
-      "name": "Upper Body",
-      "occupation": "Fry Cook",
-      "image": "http://static.tvtropes.org/pmwiki/pub/images/ickis.png",
-      "location": "A Pineapple Under the Sea"
+      "id": 1
+     
     },
     {
-      "id": 2,
-      "name": "Torso",
-      "occupation": "Restaurant Owner",
-      "image": "http://static.tvtropes.org/pmwiki/pub/images/ickis.png",
-      "location": "A Giant Anchor"
+      "id": 2
+    
     },
     {
-      "id": 3,
-      "name": "Legs",
-      "occupation": "Cashier",
-      "image": "http://static.tvtropes.org/pmwiki/pub/images/ickis.png",
-      "location": "An Easter Island Head"
+      "id": 3
+    
     },
     {
-      "id": 4,
-      "name": "Dexter",
-      "occupation": "Boy Genius",
-      "image": "http://static.tvtropes.org/pmwiki/pub/images/ickis.png",
-      "location": "A Secret Laboratory"
+      "id": 4
+    
     }
 ]

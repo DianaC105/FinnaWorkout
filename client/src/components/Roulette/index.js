@@ -6,10 +6,13 @@ class Roulette extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      chestWorkout: this.props.chestWorkouts,
       spinAngleStart: 0,
       startAngle: 0,
       spinTime: 0,
       arc: Math.PI / (props.options.length / 2),
+      refinedOptions:[]
+
     }
     this.spinTimer = null;
     this.handleOnClick = this.handleOnClick.bind(this);
@@ -34,7 +37,9 @@ class Roulette extends React.Component {
   };
 
   componentDidMount() {
+    console.log("is this Mounted")
     this.drawRouletteWheel();
+    
   }
 
   byte2Hex(n) {
@@ -58,7 +63,14 @@ class Roulette extends React.Component {
 
     return this.RGB2Color(red,green,blue);
   }
-
+  midPointArray(twoDArray, i){ 
+    for(let j =0; j <twoDArray.length; j++){ 
+      console.log([i], "check")
+      console.log(this.props.options[i], "")
+     let refined =  this.state.refinedOptions.push(this.props.options[i][j].name )
+      console.log(refined);
+    }
+  }
   drawRouletteWheel() {
     const { options, baseSize } = this.props;
     let { startAngle, arc } = this.state;
@@ -75,35 +87,37 @@ class Roulette extends React.Component {
       const outsideRadius = baseSize - 25;
       const textRadius = baseSize - 45;
       const insideRadius = baseSize - 55;
-
+      
       ctx = canvas.getContext('2d');
       ctx.clearRect(0,0,600,600);
-
+      
       ctx.strokeStyle = 'white';
       ctx.lineWidth = 2;
-
+      
       ctx.font = '14px Helvetica, Arial';
-
+      
       for(let i = 0; i < options.length; i++) {
         const angle = startAngle + i * arc;
-
+        
         ctx.fillStyle = this.getColor(i, options.length);
-
+        
         ctx.beginPath();
         ctx.arc(baseSize, baseSize, outsideRadius, angle, angle + arc, false);
         ctx.arc(baseSize, baseSize, insideRadius, angle + arc, angle, true);
         ctx.fill();
-
+        
         ctx.save();
         ctx.fillStyle = 'white';
         ctx.translate(baseSize + Math.cos(angle + arc / 2) * textRadius,
-                      baseSize + Math.sin(angle + arc / 2) * textRadius);
+        baseSize + Math.sin(angle + arc / 2) * textRadius);
         ctx.rotate(angle + arc / 2 + Math.PI / 2);
         const text = options[i];
         ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
         ctx.restore();
-      }
+        this.midPointArray(options, i)
 
+        console.log(this.midPointArray(options,i),"Is this function being called")
+      }
       //Arrow
       ctx.fillStyle = 'red';
       ctx.beginPath();
@@ -114,6 +128,7 @@ class Roulette extends React.Component {
       ctx.stroke();
     }
   }
+  
 
   spin() {
     this.spinTimer = null;
@@ -136,6 +151,8 @@ class Roulette extends React.Component {
         this.spinTimer = setTimeout(() => this.rotate(), 30);
       })
     }
+
+    console.log(this.state);
   }
 
   stopRotateWheel() {
@@ -172,10 +189,12 @@ class Roulette extends React.Component {
     return (
       <div className="roulette">
         <div className="roulette-container">
-          <canvas ref="canvas" width={baseSize * 2} height={baseSize * 2} className="roulette-canvas"></canvas>
+          <canvas ref="canvas" width={baseSize * 2} height={baseSize * 2} className="roulette-canvas">
+          </canvas>
         </div>
         <div className="roulette-container">
           <input type="button" value="spin" onClick={this.handleOnClick} className="button" id="spin" />
+          
         </div>
       </div>
     );
