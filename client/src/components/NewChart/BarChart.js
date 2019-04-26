@@ -12,35 +12,36 @@ export class BarChart extends Component {
         booty: 0
     };
 
-    // componentDidMount() {
-    //     this.loadStats();
-    // };
+    componentDidMount() {
+        this.loadStats();
+    };
 
-    // loadStats = () => {
-    //     API.getStats()
-    //         .then(res => this.setState({
-    //             [bodyPart]: this.state[bodyPart]
-    //         }));
-    // }
+    loadStats = (bodyPart) => {
+        API.getStats(bodyPart)
+            .then(res => this.setState({
+                [bodyPart]: this.state[bodyPart]
+            }));
+    }
 
     handleIncrement = (bodyPart) => {
         this.setState({
             [bodyPart]: this.state[bodyPart] + 1
         });
-        // updateData();
+        //updateData();
     };
 
-    // updateData(bodyPart) {
-    //     API.updateStats({
-    //         upperBody: [bodyPart].upperBody,
-    //         torso: [bodyPart].torso,
-    //         legs: [bodyPart].legs,
-    //         chest: [bodyPart].chest,
-    //         booty: [bodyPart].booty
+    updateData(bodyPart) {
+        API.updateStats({
+            //[bodyPart]: this.state[bodyPart]
+            upperBody: [bodyPart].upperBody,
+            torso: [bodyPart].torso,
+            legs: [bodyPart].legs,
+            chest: [bodyPart].chest,
+            booty: [bodyPart].booty
 
-    //     })
-    //         .then(() => this.getStats());
-    // };
+        })
+            .then(() => this.getStats());
+    };
 
     render() {
         const data = {
