@@ -5,6 +5,7 @@ import Example from "../components/Nav";
 import Wrapper from "../components/Wrapper";
 import Jumbotron from "../components/Jumbotron";
 import Roulette from '../components/Roulette';
+import "./Homepage.css";
 //import Form from "../components/Form"
 //import Workoutpick from "../components/WorkoutCard";
 import BarChart from "../components/NewChart/BarChart";
@@ -174,6 +175,14 @@ state = {
         return "Nothing here"
       }
     }
+    superClick = () =>{
+      let b1 = document.getElementById('Bar');
+      let b2 = document.getElementById('Se');
+      let b3 = document.getElementById('Tuc');
+      b1.click();
+      b2.click();
+      b3.click();
+    }
 
     render(){
       if(!this.state.isLoggedIn){
@@ -183,6 +192,8 @@ state = {
       console.log(this.state.chestWorkouts);
     return (
       <div>
+        <div className="backlay"></div>
+        <div className = "overlay"></div>
         <Example />
         <Wrapper>
         <Jumbotron /> FinnaWorkOUT
@@ -190,6 +201,7 @@ state = {
         
         <div>
           {this.renderRoulette()}
+          <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" />
         </div>
 
         <BarChart />
