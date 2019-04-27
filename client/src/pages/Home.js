@@ -10,8 +10,6 @@ import Workoutpick from "../components/WorkoutCard";
 import BarChart from "../components/NewChart/BarChart";
 
 
-
-
 export default class Home extends Component{
 
 
@@ -164,7 +162,8 @@ state = {
       if(!this.state.isLoggedIn){
         return <Redirect to = "/login"/>
       }
-      console.log(this.state)
+      //console.log(this.state)
+
     return (
       <div>
         <Example />
@@ -173,10 +172,13 @@ state = {
 
         {this.state.mapObjects.map(object => (
 
-          <Workoutpick
+          <Workoutpick key={object.toString()}
+         
               options={this.checkBodyPart(object)}
+
             />
             ))}
+            
           <BarChart />
         </Wrapper>
       </div>
