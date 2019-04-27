@@ -30,6 +30,7 @@ class Roulette extends React.Component {
   };
 
   static defaultProps = {
+    
     options:  ['item1', 'item2','item3','item4','item5'],
     baseSize: 250,
     spinAngleStart: Math.random() * 10 + 10,
@@ -203,8 +204,12 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
     ctx.save();
     ctx.font = 'bold 30px Space Mono monospace';
     const text = options[index]
+    console.log(text, "is the the final output");
     ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, baseSize / 3);
     ctx.restore();
+    this.props.onComplete(this.setState({ chosenWorkOut:text}, () => {
+      this.props.setChosenWorkOut(text)
+    }));
     // this.props.onComplete(text);
   }
 

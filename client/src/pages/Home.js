@@ -5,6 +5,7 @@ import Example from "../components/Nav";
 import Wrapper from "../components/Wrapper";
 import Jumbotron from "../components/Jumbotron";
 import Roulette from '../components/Roulette';
+import ResultCard from "../components/ResultCard"
 import "./Homepage.css";
 //import Form from "../components/Form"
 //import Workoutpick from "../components/WorkoutCard";
@@ -20,6 +21,7 @@ state = {
       isLoggedIn: true,
       username:"",
       workouts: [],
+      apiData: [],
       plan: [],
       message: "Putting togeather you're plan now",
       q:"",
@@ -30,8 +32,14 @@ state = {
       chestOptionNames: [],
       backOptionNames: [],
       absOptionNames: [],
-      mapObjects: ["chest", "back", "abs"]
+      mapObjects: ["chest", "back", "abs"],
+      chosenId: [],
+      chosenWorkOut: [],
+      chosenChest: "",
+      chosenBack: "",
+      chosenAbs: ""
 };
+
 
 
     
@@ -94,7 +102,36 @@ state = {
       console.log(backWorkouts)
       console.log(absWorkouts)
     }
-    
+
+    setChosenWorkOut = workout => {
+      let a = this.state.arr.slice();
+      a[workout] = "random element";
+      this.setState({ 
+        chosenWorkOut: a
+       });
+      
+      // this.setState({ chosenChest:chestWorkouts})
+      // this.setState({chosenBack:backWorkouts})
+      // this.setState({chosenAbs:absWorkouts})
+    }
+
+    handleOnComplete = () => {
+      for (let i = 0; i < this.state.workouts.length; i++ ){
+        const {workoutName,bodyPart,id} = this.state.workouts[i]
+        const chest = bodyPart[0]
+        const back = bodyPart[1]
+        const abs = bodyPart[2]
+        if(workoutName === this.state.chosenWorkOut){
+          this.setState({
+            chosenId: id,
+            chosenChest: chest,
+            chosenBack : back,
+            chosenAbs: abs
+          })
+        }
+      }
+    }
+     
     // componentWillMount(){
     //   console.log("mounting")
     //   this.getWorkouts() 
@@ -128,7 +165,7 @@ state = {
     filterBodyParts(array,bodyPart){
       return array.filter(workout => workout.bodyPart === bodyPart )
     };
-    
+
     getWorkouts = () => {
       API.getWorkouts()
       .then(res =>{
@@ -160,21 +197,45 @@ state = {
       }
     }
     renderRoulette = () => {
+    
       console.log("render attempt");
       console.log(this.state.chestOptionNames);
       if(this.state.chestOptionNames.length > 0){
         
         return(
           <div>
-          <Roulette options = {this.state.chestOptionNames}/>
-          <Roulette options = {this.state.absOptionNames}/>
-          <Roulette options = {this.state.backOptionNames}/>
+          <Roulette 
+            options = {this.state.chestOptionNames}
+            setChosenWorkOut={this.setChosenWorkOut}
+            onComplete={this.handleOnComplete}
+          />
+          <Roulette 
+          options = {this.state.absOptionNames}
+          setChosenWorkOut={this.setChosenWorkOut}
+          onComplete={this.handleOnComplete}
+          />
+          <Roulette
+           options = {this.state.backOptionNames}
+           setChosenWorkOut={this.setChosenWorkOut}
+            onComplete={this.handleOnComplete}
+           />
           </div>
         )
       } else{
         return "Nothing here"
       }
     }
+    renderResCard = () => {
+      if(this.state.chosenWorkOut.length > 0){
+        return(
+          <ResultCard
+          chosenChest={this.state.chosenWorkOut}
+          chosenBack={this.state.chosenWorkOut}
+          chosenAbs={this.state.chosenWorkOut}
+          />)
+      } else {
+        return false
+      }
     superClick = () =>{
       let b1 = document.getElementById('Bar');
       let b2 = document.getElementById('Se');
@@ -182,6 +243,7 @@ state = {
       b1.click();
       b2.click();
       b3.click();
+
     }
 
     render(){
@@ -201,6 +263,7 @@ state = {
         
         <div>
           {this.renderRoulette()}
+          {this.renderResCard()}
           <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" />
         </div>
 

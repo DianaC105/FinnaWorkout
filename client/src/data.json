@@ -1,0 +1,65 @@
+[
+    {
+      "id": 1,
+      "name" : " Seated Machine Chestpress",
+      "bodyPart" : "chest"
+     
+    },
+    {
+      "id": 2,
+      "name" : "Bar Bell Benchpress",
+      "bodyPart" : "chest"
+    },
+    {
+      "id": 4,
+      "name" : "Bar Bell Benchpress",
+      "bodyPart" : "chest"
+    
+    },
+    {
+      "id": 5,
+      "name" : "Bar Bell Benchpress",
+      "bodyPart" : "chest"
+    },
+    {
+      "id": 6,
+      "name" : "Barbell Deadlift",
+      "bodyPart" : "back"
+    },
+    {
+      "id": 7,
+      "name" : "Wide-grip Pullups",
+      "bodyPart" : "back"
+    },
+    {
+      "id": 3,
+      "name" : "Wide-grip Cable Row",
+      "bodyPart" : "back"
+    },
+    {
+      "id": 8,
+      "name" : "Single-Arm Dumbbell Row",
+      "bodyPart" : "back"
+    },
+    {
+      "id": 9,
+      "name" : "Tuck and Crunch",
+      "bodyPart" : "abs"
+    },
+    {
+      "id": 10,
+      "name" : "Modified V-sit",
+      "bodyPart" : "abs"
+    },
+    {
+      "id": 11,
+      "name" : "Hanging leg raise",
+      "bodyPart" : "abs"
+    },
+    {
+      "id": 12,
+      "name" : "Hanging Knee raise",
+      "bodyPart" : "abs"
+    }
+    
+]
