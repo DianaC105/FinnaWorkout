@@ -104,10 +104,10 @@ state = {
     }
 
     setChosenWorkOut = workout => {
-      let a = this.state.arr.slice();
-      a[workout] = "random element";
+      // let a = this.state.arr.slice();
+      // a[workout] = "random element";
       this.setState({ 
-        chosenWorkOut: a
+        chosenWorkOut: workout
        });
       
       // this.setState({ chosenChest:chestWorkouts})
@@ -234,9 +234,11 @@ state = {
           chosenAbs={this.state.chosenWorkOut}
           />)
       } else {
-        return false
+        return false;
       }
-    superClick = () =>{
+    }
+    
+      superClick = () =>{
       let b1 = document.getElementById('Bar');
       let b2 = document.getElementById('Se');
       let b3 = document.getElementById('Tuc');
@@ -247,6 +249,7 @@ state = {
     }
 
     render(){
+
       if(!this.state.isLoggedIn){
         return <Redirect to = "/login"/>
       }
@@ -274,6 +277,5 @@ state = {
     )
   }
 }
-
 
 
