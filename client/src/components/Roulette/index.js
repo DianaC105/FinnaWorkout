@@ -6,12 +6,12 @@ class Roulette extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chestWorkout: this.props.chestWorkouts,
+      //chestWorkout: this.props.chestWorkouts,
       spinAngleStart: 0,
       startAngle: 0,
       spinTime: 0,
       arc: Math.PI / (props.options.length / 2),
-      refinedOptions:[]
+      //refinedOptions:[]
 
     }
     this.spinTimer = null;
@@ -30,7 +30,7 @@ class Roulette extends React.Component {
   };
 
   static defaultProps = {
-    options:  [],
+    options:  ['item1', 'item2','item3','item4','item5'],
     baseSize: 150,
     spinAngleStart: Math.random() * 10 + 10,
     spinTimeTotal: Math.random() * 3 + 4 * 1000,
@@ -63,14 +63,14 @@ class Roulette extends React.Component {
 
     return this.RGB2Color(red,green,blue);
   }
-  midPointArray(twoDArray, i){ 
-    for(let j =0; j <twoDArray.length; j++){ 
-      console.log([i], "check")
-      console.log(this.props.options[i], "")
-     let refined =  this.state.refinedOptions.push(this.props.options[i][j].name )
-      console.log(refined);
-    }
-  }
+  // midPointArray(twoDArray, i){ 
+  //   for(let j =0; j <twoDArray.length; j++){ 
+  //     console.log([i], "check")
+  //     console.log(this.props.options[i], "")
+  //    let refined =  this.state.refinedOptions.push(this.props.options[i][j].name )
+  //     console.log(refined);
+  //   }
+  // }
   drawRouletteWheel() {
     const { options, baseSize } = this.props;
     let { startAngle, arc } = this.state;
@@ -114,9 +114,9 @@ class Roulette extends React.Component {
         const text = options[i];
         ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
         ctx.restore();
-        this.midPointArray(options, i)
+        // this.midPointArray(options, i)
 
-        console.log(this.midPointArray(options,i),"Is this function being called")
+        // console.log(this.midPointArray(options,i),"Is this function being called")
       }
       //Arrow
       ctx.fillStyle = 'red';
@@ -184,6 +184,7 @@ class Roulette extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const { baseSize } = this.props;
 
     return (
