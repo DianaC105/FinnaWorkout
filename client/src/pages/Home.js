@@ -7,6 +7,10 @@ import Jumbotron from "../components/Jumbotron";
 import Roulette from '../components/Roulette';
 //import Form from "../components/Form"
 //import Workoutpick from "../components/WorkoutCard";
+import BarChart from "../components/NewChart/BarChart";
+
+
+
 export default class Home extends Component{
 
 
@@ -188,6 +192,7 @@ state = {
           {this.renderRoulette()}
         </div>
 
+        <BarChart />
           
         </Wrapper>
       </div>

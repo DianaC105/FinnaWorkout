@@ -36,10 +36,10 @@ export default {
   },
 
   getStats: function() {
-    return axios.get("api/user/stats");
+    return axios.get("api/stats");
   },
 
-  updateStats: function() {
-    return axios.put("api/user/stats");
+  updateStats: function(bodyPart) {
+    return axios.post("api/stats", bodyPart);
   }
 }
