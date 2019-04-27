@@ -100,7 +100,7 @@ state = {
 
       //cheecking login status
       this.loginCheck();
-      //console.log("mounted")
+      
       
 
     }
