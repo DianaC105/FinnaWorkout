@@ -1,5 +1,11 @@
-.backlay{
-    background-image: url("../images/mat.jpg") ;
+.welcomin{
+    margin-top: 20px;
+    
+}
+
+
+.backlay1{
+    background-image: url("../images/potato.jpg") ;
     -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -12,7 +18,6 @@
   z-index: -11;
   
   background-repeat: no-repeat;
- 
 }
 .overlay{
     opacity:0.6;
@@ -24,3 +29,30 @@
     left:0px;
     z-index:-10;
 }
+h1{
+    color: white;
+}
+p{
+    color:white;
+}
+h4{
+    color:white;
+}
+h3{
+    color:white;
+}
+label{
+    color:white;
+}
+small{
+    color:white;
+}
+.form-text{
+    color:white;
+}
+.flavortxt{
+    margin-top: 25px;
+}
+
+   
+
