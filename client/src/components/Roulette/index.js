@@ -194,7 +194,7 @@ class Roulette extends React.Component {
           </canvas>
         </div>
         <div className="roulette-container">
-          <input type="button" value="spin" onClick={this.handleOnClick}  className="button" id="spin" />
+          <input type="button" value="spin" onClick={this.handleOnClick}  className="button" id={this.props.options[0].substring(0,3).trim()} />
           
         </div>
       </div>

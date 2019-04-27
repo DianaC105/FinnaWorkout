@@ -5,9 +5,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 //Generating Schema
 const userSchema = new Schema({
-  Chest: Number,
-  Abs: Number,
-  Back: Number
+ 
   
 
     
