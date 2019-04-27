@@ -77,8 +77,13 @@ class Example extends React.Component {
   render() {
     return (
       <div>
+<<<<<<< HEAD
         <Navbar color="faded" bg="light">
           <NavbarBrand href="/" className="mr-auto">reactstrap</NavbarBrand>
+=======
+        <Navbar color="faded" light>
+          <NavbarBrand href="/" className="mr-auto">Finna Workout</NavbarBrand>
+>>>>>>> 9e0a3af6b2aed1bfc77b4136a6ae9dd0d8074cc9
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
