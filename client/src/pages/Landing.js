@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import Navbar from "../components/Navbar";
 //import API from "../utils/API";
-import "./Homepage.css";
+import "./landing.css";
 
 class Landing extends Component {
   state = {
@@ -15,16 +15,24 @@ class Landing extends Component {
   render() {
     return(
         <div>
+            <div className="backlay1"></div>
+            <div className="overlay"></div>
             <Navbar />
             <div className="container welcomin">
                 <div className="row">
                 <div className="col-md-12">
-                    <h4 className="text-center">
-                    The <b>ultimate</b> workout experience for potatoes like yourself
-                    </h4>
-                    <p className="text-center">
+                    <h1 className>
+                    The <b>ultimate</b> 
+                    </h1>
+                    <h1>
+                    workout experience
+                    </h1>
+                    <h1>
+                    for potatoes like yourself
+                    </h1>
+                    <h4 className="flavortxt">
                     We're going to break you.
-                    </p>
+                    </h4>
                     <br />
                 </div>
                 </div>
@@ -38,7 +46,7 @@ class Landing extends Component {
                         borderRadius: "3px",
                         letterSpacing: "1.5px"
                         }}
-                        className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                        className="btn btn-light"
                     >
                         Register
                     </Link>
@@ -51,7 +59,7 @@ class Landing extends Component {
                             borderRadius: "3px",
                             letterSpacing: "1.5px"
                             }}
-                            className="btn btn-large btn-flat waves-effect white black-text"
+                            className="btn btn-info"
                         >
                             Log In
                         </Link>

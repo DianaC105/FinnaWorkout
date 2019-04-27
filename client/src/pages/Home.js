@@ -6,8 +6,13 @@ import Wrapper from "../components/Wrapper";
 import Jumbotron from "../components/Jumbotron";
 import Roulette from '../components/Roulette';
 import ResultCard from "../components/ResultCard"
+import "./Homepage.css";
 //import Form from "../components/Form"
 //import Workoutpick from "../components/WorkoutCard";
+import BarChart from "../components/NewChart/BarChart";
+
+
+
 export default class Home extends Component{
 
 
@@ -231,6 +236,14 @@ state = {
       } else {
         return false
       }
+    superClick = () =>{
+      let b1 = document.getElementById('Bar');
+      let b2 = document.getElementById('Se');
+      let b3 = document.getElementById('Tuc');
+      b1.click();
+      b2.click();
+      b3.click();
+
     }
 
     render(){
@@ -241,6 +254,8 @@ state = {
       console.log(this.state.chestWorkouts);
     return (
       <div>
+        <div className="backlay"></div>
+        <div className = "overlay"></div>
         <Example />
         <Wrapper>
         <Jumbotron /> FinnaWorkOUT
@@ -249,8 +264,10 @@ state = {
         <div>
           {this.renderRoulette()}
           {this.renderResCard()}
+          <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" />
         </div>
 
+        <BarChart />
           
         </Wrapper>
       </div>

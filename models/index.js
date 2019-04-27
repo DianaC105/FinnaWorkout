@@ -1,5 +1,7 @@
 module.exports = {
 	Workout: require("./workout"),
 	User: require("./user"),
-	Plan: require("./plan")
+	Plan: require("./plan"),
+	Stats: require("./stats")
+	
 };
