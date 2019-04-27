@@ -8,6 +8,10 @@ import Roulette from '../components/Roulette';
 import "./Homepage.css";
 //import Form from "../components/Form"
 //import Workoutpick from "../components/WorkoutCard";
+import BarChart from "../components/NewChart/BarChart";
+
+
+
 export default class Home extends Component{
 
 
@@ -200,6 +204,7 @@ state = {
           <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" />
         </div>
 
+        <BarChart />
           
         </Wrapper>
       </div>

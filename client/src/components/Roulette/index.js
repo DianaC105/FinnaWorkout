@@ -229,6 +229,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
           </canvas>
         </div>
         <div className="roulette-container">
+
           <input type="button" value="spin" onClick={this.handleOnClick} className="button" id={this.props.options[0].substring(0,3).trim()} />
           
         </div>

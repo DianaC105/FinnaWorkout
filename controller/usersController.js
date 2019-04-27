@@ -1,6 +1,5 @@
 //Importing models
 const db = require("../models");
-const User = require('../models/user');
 
 
 module.exports = {
@@ -27,7 +26,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {
-    User.findOneAndUpdate({
+    db.User.findOneAndUpdate({
       _id: req.params.id
     }, req.body)
       .then(dbModel => res.json(dbModel))
@@ -43,7 +42,7 @@ module.exports = {
   },
   register: function (req, res) {
     /* To create a new user */
-    User
+    db.User
       .register(new User({username: req.body.username}), req.body.password, function (err) {
         if (err) {
           console.log('error while user register!', err);
