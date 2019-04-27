@@ -8,4 +8,5 @@
     display: flex;
     justify-content: center;
     padding: 5px;
+    font-family: 'Space Mono', monospace;
   }

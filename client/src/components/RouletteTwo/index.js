@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import "./style.css";
+import '../WorkoutCard/index';
 
-class Roulette extends React.Component {
+class RouletteTwo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //chestWorkout: this.props.chestWorkouts,
       spinAngleStart: 0,
       startAngle: 0,
       spinTime: 0,
       arc: Math.PI / (props.options.length / 2),
-      //refinedOptions:[]
-
     }
     this.spinTimer = null;
     this.handleOnClick = this.handleOnClick.bind(this);
@@ -30,16 +28,16 @@ class Roulette extends React.Component {
   };
 
   static defaultProps = {
-    options:  ['item1', 'item2','item3','item4','item5'],
-    baseSize: 250,
+    options:  ['Seated Machine Chestpress', 'Bar Bell Benchpress', 'Incline Dumbbell Press', 'Chest Dips'],
+    baseSize: 150,
     spinAngleStart: Math.random() * 10 + 10,
     spinTimeTotal: Math.random() * 3 + 4 * 1000,
   };
 
+//   This. was started but not finsihed
   componentDidMount() {
-    console.log("is this Mounted")
+    // this.
     this.drawRouletteWheel();
-    
   }
 
   byte2Hex(n) {
@@ -63,43 +61,6 @@ class Roulette extends React.Component {
 
     return this.RGB2Color(red,green,blue);
   }
-  // midPointArray(twoDArray, i){ 
-  //   for(let j =0; j <twoDArray.length; j++){ 
-  //     console.log([i], "check")
-  //     console.log(this.props.options[i], "")
-  //    let refined =  this.state.refinedOptions.push(this.props.options[i][j].name )
-  //     console.log(refined);
-  //   }
-  // }
-
-//WordWrapped
-wordWrap(context, text, x, y, lineHeight, fitWidth) {
-  fitWidth = fitWidth || 0;
-  if (fitWidth <= 0) {
-      context.fillText(text, x, y);
-      return;
-  }
-  var words = text.split(' ');
-  var currentLine = 0;
-  var idx = 1;
-  while (words.length > 0 && idx <= words.length) {
-      var str = words.slice(0, idx).join(' ');
-      var w = context.measureText(str).width;
-      if (w > fitWidth) {
-          if (idx === 1) {
-              idx = 2;
-          }
-          context.fillText(words.slice(0, idx - 1).join(' '), x, y + (lineHeight * currentLine));
-          currentLine++;
-          words = words.splice(idx - 1);
-          idx = 1;
-      }
-      else { idx++; }
-  }
-  if (idx > 0)
-      context.fillText(words.join(' '), x, y + (lineHeight * currentLine));
-}
-
 
   drawRouletteWheel() {
     const { options, baseSize } = this.props;
@@ -114,47 +75,40 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
 
     const canvas = this.refs.canvas;
     if (canvas.getContext) {
-      // const outsideRadius = baseSize - 25;
-      // const textRadius = baseSize - 45;
-      // const insideRadius = baseSize - 55;
+      const outsideRadius = baseSize - 25;
+      const textRadius = baseSize - 45;
+      const insideRadius = baseSize - 55;
 
-      const outsideRadius = baseSize - 20;
-      const textRadius = baseSize - 100;
-      const insideRadius = 100;
-      
       ctx = canvas.getContext('2d');
       ctx.clearRect(0,0,600,600);
-      
+
       ctx.strokeStyle = 'white';
       ctx.lineWidth = 2;
-      
-      ctx.font = ' bold 18px Space Mono';
-      
+
+      ctx.font = '14px Helvetica, Arial';
+
       for(let i = 0; i < options.length; i++) {
         const angle = startAngle + i * arc;
-        
+
         ctx.fillStyle = this.getColor(i, options.length);
-        
+
         ctx.beginPath();
         ctx.arc(baseSize, baseSize, outsideRadius, angle, angle + arc, false);
         ctx.arc(baseSize, baseSize, insideRadius, angle + arc, angle, true);
         ctx.fill();
-        
+
         ctx.save();
         ctx.fillStyle = 'white';
         ctx.translate(baseSize + Math.cos(angle + arc / 2) * textRadius,
-        baseSize + Math.sin(angle + arc / 2) * textRadius);
+                      baseSize + Math.sin(angle + arc / 2) * textRadius);
         ctx.rotate(angle + arc / 2 + Math.PI / 2);
         const text = options[i];
-        this.wordWrap (ctx,text, -37.5, -15, 15,50)
-        // ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+        ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
         ctx.restore();
-        // this.midPointArray(options, i)
-
-        // console.log(this.midPointArray(options,i),"Is this function being called")
       }
+
       //Arrow
-      ctx.fillStyle = 'yellow';
+      ctx.fillStyle = 'red';
       ctx.beginPath();
       ctx.lineTo(baseSize + 10, baseSize - (outsideRadius + 20));
       ctx.lineTo(baseSize + 0, baseSize - (outsideRadius - 5));
@@ -163,7 +117,6 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
       ctx.stroke();
     }
   }
-  
 
   spin() {
     this.spinTimer = null;
@@ -179,7 +132,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
       const spinAngle = spinAngleStart - this.easeOut(this.state.spinTime, 0, spinAngleStart, spinTimeTotal);
       this.setState({
         startAngle: this.state.startAngle + spinAngle * Math.PI / 180,
-        spinTime: this.state.spinTime + 15,
+        spinTime: this.state.spinTime + 30,
       }, () => {
         this.drawRouletteWheel();
         clearTimeout(this.spinTimer);
@@ -201,7 +154,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
     const arcd = arc * 180 / Math.PI;
     const index = Math.floor((360 - degrees % 360) / arcd);
     ctx.save();
-    ctx.font = 'bold 30px Space Mono monospace';
+    ctx.font = 'bold 20px Helvetica, Arial';
     const text = options[index]
     ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, baseSize / 3);
     ctx.restore();
@@ -219,7 +172,6 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
   }
 
   render() {
-    console.log(this.props);
     const { baseSize } = this.props;
 
     return (
@@ -230,11 +182,10 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
         </div>
         <div className="roulette-container">
           <input type="button" value="spin" onClick={this.handleOnClick} className="button" id="spin" />
-          
         </div>
       </div>
     );
   }
 }
 
-export default Roulette;
+export default RouletteTwo;
