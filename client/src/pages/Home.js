@@ -5,8 +5,8 @@ import Example from "../components/Nav";
 import Wrapper from "../components/Wrapper";
 import Jumbotron from "../components/Jumbotron";
 import Roulette from '../components/Roulette';
-import Form from "../components/Form"
-import Workoutpick from "../components/WorkoutCard";
+//import Form from "../components/Form"
+//import Workoutpick from "../components/WorkoutCard";
 export default class Home extends Component{
 
 
@@ -90,17 +90,17 @@ state = {
       console.log(absWorkouts)
     }
     
-    componentWillMount(){
-      console.log("mounting")
-      this.getWorkouts() 
-      // this.updateWorkoutsByBodyPart(this.state.chestWorkouts);
-    }
+    // componentWillMount(){
+    //   console.log("mounting")
+    //   this.getWorkouts() 
+    //   // this.updateWorkoutsByBodyPart(this.state.chestWorkouts);
+    // }
 
     componentDidMount(){
 
       //cheecking login status
       this.loginCheck();
-      //console.log("mounted")
+      
       
 
     }
@@ -154,25 +154,41 @@ state = {
         return this.state.absOptionNames;
       }
     }
+    renderRoulette = () => {
+      console.log("render attempt");
+      console.log(this.state.chestOptionNames);
+      if(this.state.chestOptionNames.length > 0){
+        
+        return(
+          <div>
+          <Roulette options = {this.state.chestOptionNames}/>
+          <Roulette options = {this.state.absOptionNames}/>
+          <Roulette options = {this.state.backOptionNames}/>
+          </div>
+        )
+      } else{
+        return "Nothing here"
+      }
+    }
 
     render(){
       if(!this.state.isLoggedIn){
         return <Redirect to = "/login"/>
       }
-      console.log(this.state)
+      console.log(this.state);
+      console.log(this.state.chestWorkouts);
     return (
       <div>
         <Example />
         <Wrapper>
         <Jumbotron /> FinnaWorkOUT
+        
+        
+        <div>
+          {this.renderRoulette()}
+        </div>
 
-        {this.state.mapObjects.map(object => (
-
-          <Workoutpick
-              options={this.checkBodyPart(object)}
-            />
-            ))}
-          <Form />
+          
         </Wrapper>
       </div>
     )
