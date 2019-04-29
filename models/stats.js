@@ -8,6 +8,7 @@ const statsSchema = new Schema({
     Chest: Number,
     Abs: Number,
     Back: Number,
+    Legs: Number,
     userId: {
        type: Schema.Types.ObjectId,
        ref: "User"

@@ -196,7 +196,7 @@ state = {
         <div className = "overlay"></div>
         <Example />
         <Wrapper>
-       
+        <BarChart />
         <Jumbotron /> FinnaWorkOUT
         
         
@@ -205,7 +205,7 @@ state = {
           <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" />
         </div>
       
-        <BarChart />
+        {/* <BarChart /> */}
           
         </Wrapper>
       </div>

@@ -8,7 +8,8 @@ export class BarChart extends Component {
     state = {
         chest: 0,
         abs: 0,
-        back: 0
+        back: 0,
+        legs: 0
     };
 
     componentDidMount() {
@@ -38,7 +39,7 @@ export class BarChart extends Component {
     };
 
     sendStats = () => {
-        let statsObject = { Chest: this.state.chest, Abs: this.state.abs, Back: this.state.back }
+        let statsObject = { Chest: this.state.chest, Abs: this.state.abs, Back: this.state.back, Legs: this.state.legs }
         API.updateStats(statsObject)
             .then(res => {
                 console.log("this works!")
@@ -56,14 +57,15 @@ export class BarChart extends Component {
                     this.setState({
                         chest: stats.Chest,
                         abs: stats.Abs,
-                        back: stats.Back
+                        back: stats.Back,
+                        legs: stats.Legs
                     })
                 }
             })
 
     }
     updateDataBase = () => {
-        let statsObject = { Chest: 3, Abs: 6, Back: 2 }
+        let statsObject = { Chest: 3, Abs: 6, Back: 2, Legs: 5 }
         API.updateStats(statsObject)
             .then(res => {
                 console.log("this works!")
@@ -81,12 +83,12 @@ export class BarChart extends Component {
     render() {
         console.log(this.state);
         const data = {
-            labels: ['Chest', 'Abs', 'Back'],
+            labels: ['Chest', 'Abs', 'Back', "Legs"],
             datasets: [
                 {
                     label: 'Workouts',
                     backgroundColor: 'purple',
-                    data: [this.state.chest, this.state.abs, this.state.back]
+                    data: [this.state.chest, this.state.abs, this.state.back, this.state.legs]
                 }
             ]
         };
@@ -119,8 +121,8 @@ export class BarChart extends Component {
             //justifyContent: "center"
             // margin: 100,
             //position: "relative",
-          
-          
+
+
 
         }
 
@@ -129,39 +131,39 @@ export class BarChart extends Component {
             backgroundColor: "black",
             color: "purple",
             margin: 0,
-            
-
-         
 
 
 
-    }
 
-    return(
+
+
+        }
+
+        return (
 
             <div>
-    <div className="content-section introduction">
-        <div className="feature-intro">
-            <h1>Workout Stats</h1>
-            <p>Track Your Progress</p>
-        </div>
-    </div>
+                <div className="content-section introduction">
+                    <div className="feature-intro">
+                        <h1>Workout Stats</h1>
+                        <p>Track Your Progress</p>
+                    </div>
+                </div>
 
-    <div className="content-section implementation">
-        {/* Chart goes here */}
-        <Chart type="bar" style={chartStyle} data={data} options={multiAxisOptions} />
-        <button color="success" id="btn1" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
-        </button> {"  "}
-        <button color="success" id="btn2" style={btnStyle} onClick={() => this.handleIncrement("abs")} > Abs Completed <i className="fas fa-dumbbell"></i>
-        </button> {"  "}
-        <button color="success" id="btn3" style={btnStyle} onClick={() => this.handleIncrement("back")} > Back Completed <i className="fas fa-dumbbell"></i>
-        </button> {"  "}
-        {/* <button color="success" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
+                <div className="content-section implementation">
+                    {/* Chart goes here */}
+                    <Chart type="bar" style={chartStyle} data={data} options={multiAxisOptions} />
+                    <button color="success" id="btn1" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("booty")} > Booty Completed <i className="fas fa-dumbbell"></i>
+                    <button color="success" id="btn2" style={btnStyle} onClick={() => this.handleIncrement("abs")} > Abs Completed <i className="fas fa-dumbbell"></i>
+                    </button> {"  "}
+                    <button color="success" id="btn3" style={btnStyle} onClick={() => this.handleIncrement("back")} > Back Completed <i className="fas fa-dumbbell"></i>
+                    </button> {"  "}
+                    <button color="success" id="btn4" style={btnStyle} onClick={() => this.handleIncrement("legs")} > Legs Completed <i className="fas fa-dumbbell"></i>
+                    </button> {"  "}
+                    {/* <button color="success" style={btnStyle} onClick={() => this.handleIncrement("booty")} > Booty Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "} */}
 
-    </div>
+                </div>
 
             </div >
 

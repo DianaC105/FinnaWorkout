@@ -5,18 +5,23 @@
 }
 
 #btn1 {
-    margin-left: 100px;
+    margin-left: 60px;
    
 }
 
 #btn2 {
-    margin-left: 215px;
+    margin-left: 120px;
 }
 
 
 #btn3 {
+    
+    margin-left: 120px;  
+}
+
+#btn4 {
     float: right;
-    margin-right: 100px;  
+    margin-right: 80px;  
 }
 
 h1, p {
@@ -28,24 +33,58 @@ p {
     font-size: 20px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 400px) {
+
+    #btn1, #btn2, #btn3, #btn4 {
+        font-size: 8px;
+        padding: 0;
+    }
    #btn1 {
-       margin: 0px;
-       padding: 0;
-       font-size: 10px;
+       margin-left: 0px;   
    }
 
    #btn2 {
-    margin-left: 5px;
-    padding: 0;
-    font-size: 10px;
-    
+    margin-left: 5px;   
 }
 
 #btn3 {
-    margin: 0px;
-    padding: 0;
-    font-size: 10px;
+    margin-left: 6px;   
+}
+
+#btn4 {
+    margin: 0px;  
+}
+
+.fa-dumbbell {
+    display:none;
 }
   
+    };
+
+
+
+@media screen and (min-width: 600) {
+
+    #btn1, #btn2, #btn3, #btn4 {
+        font-size: 50px;
+        padding: 0;
+        color: hotpink;
     }
+   #btn1 {
+       margin-left: 0px;   
+   }
+
+   #btn2 {
+    margin-left: 30px;   
+}
+
+#btn3 {
+    margin-left: 0px;   
+}
+
+#btn4 {
+    float: right;
+    margin: 0px;  
+}
+
+}
