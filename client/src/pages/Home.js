@@ -196,6 +196,7 @@ state = {
         <div className = "overlay"></div>
         <Example />
         <Wrapper>
+       
         <Jumbotron /> FinnaWorkOUT
         
         
