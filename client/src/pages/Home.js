@@ -203,7 +203,7 @@ state = {
           {this.renderRoulette()}
           <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" />
         </div>
-
+      
         <BarChart />
           
         </Wrapper>

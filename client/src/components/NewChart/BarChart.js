@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Chart } from 'primereact/chart';
 import API from '../../utils/API';
+import "./style.css";
 
 
 export class BarChart extends Component {
@@ -32,7 +33,7 @@ export class BarChart extends Component {
         //make an object reflects state with values to send to database
 
         //change it to this.state.chest
-        // this.sendStats();
+
 
     };
 
@@ -41,23 +42,23 @@ export class BarChart extends Component {
         API.updateStats(statsObject)
             .then(res => {
                 console.log("this works!")
-             
+
             })
     }
     getDataBase = () => {
         API.getStats()
             .then(res => {
-            if (res.data.length > 0) {
-                console.log(res.data);
-                let stats = res.data
-                console.log(stats[stats.length - 1]);
-                stats = stats[stats.length - 1]
-                this.setState({
-                    chest: stats.Chest,
-                    abs: stats.Abs,
-                    back: stats.Back
-                })
-            }
+                if (res.data.length > 0) {
+                    console.log(res.data);
+                    let stats = res.data
+                    console.log(stats[stats.length - 1]);
+                    stats = stats[stats.length - 1]
+                    this.setState({
+                        chest: stats.Chest,
+                        abs: stats.Abs,
+                        back: stats.Back
+                    })
+                }
             })
 
     }
@@ -103,7 +104,7 @@ export class BarChart extends Component {
                     id: 'y-axis-1',
                     ticks: {
                         min: 0,
-                        max: 30
+                        max: 50
                     }
                 }]
             }
@@ -111,40 +112,58 @@ export class BarChart extends Component {
 
         const btnStyle = {
             backgroundColor: "green",
-            padding: 5,
-            margin: 100
-
+            padding: 7,
+            borderColor: "black"
+            //display: "flex",
+            //flexDirection: "column",
+            //justifyContent: "center"
+            // margin: 100,
+            //position: "relative",
+          
+          
 
         }
 
-        return (
+        const chartStyle = {
+            position: "relative",
+            backgroundColor: "black",
+            color: "purple",
+            margin: 0,
+            
+
+         
+
+
+
+    }
+
+    return(
 
             <div>
-                <div className="content-section introduction">
-                    <div className="feature-intro">
-                        <h1>Workout Stats</h1>
-                        <p>See Your Progress</p>
-                    </div>
-                </div>
+    <div className="content-section introduction">
+        <div className="feature-intro">
+            <h1>Workout Stats</h1>
+            <p>Track Your Progress</p>
+        </div>
+    </div>
 
-                <div className="content-section implementation">
-                    {/* Chart goes here */}
-                    <Chart type="bar" data={data} options={multiAxisOptions} />
-
-                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
-                    </button> {"  "}
-                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("abs")} > Abs Completed <i className="fas fa-dumbbell"></i>
-                    </button> {"  "}
-                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("back")} > Back Completed <i className="fas fa-dumbbell"></i>
-                    </button> {"  "}
-                    {/* <button color="success" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
+    <div className="content-section implementation">
+        {/* Chart goes here */}
+        <Chart type="bar" style={chartStyle} data={data} options={multiAxisOptions} />
+        <button color="success" id="btn1" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
+        </button> {"  "}
+        <button color="success" id="btn2" style={btnStyle} onClick={() => this.handleIncrement("abs")} > Abs Completed <i className="fas fa-dumbbell"></i>
+        </button> {"  "}
+        <button color="success" id="btn3" style={btnStyle} onClick={() => this.handleIncrement("back")} > Back Completed <i className="fas fa-dumbbell"></i>
+        </button> {"  "}
+        {/* <button color="success" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
                     <button color="success" style={btnStyle} onClick={() => this.handleIncrement("booty")} > Booty Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "} */}
 
-                </div>
+    </div>
 
-            </div>
+            </div >
 
         )
     }

@@ -1,0 +1,29 @@
+.success {
+    display: inline;
+    padding: 10x;
+    
+}
+
+#btn1 {
+    margin-left: 100px;
+   
+}
+
+#btn2 {
+    margin-left: 215px;
+}
+
+
+#btn3 {
+    float: right;
+    margin-right: 100px;  
+}
+
+h1, p {
+  text-align: center;
+  color: black;
+}
+
+p {
+    font-size: 20px;
+}
