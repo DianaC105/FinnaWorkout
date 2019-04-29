@@ -188,7 +188,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
       })
     }
 
-    console.log(this.state);
+    console.log('state within rotate', this.state);
   }
 
   stopRotateWheel() {
@@ -207,9 +207,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
     console.log(text, "is the the final output");
     ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, baseSize / 3);
     ctx.restore();
-    this.props.onComplete(this.setState({ chosenWorkOut:text}, () => {
-      this.props.setChosenWorkOut(text)
-    }));
+    this.props.onComplete(text);
     // this.props.onComplete(text);
   }
 
@@ -234,9 +232,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
           </canvas>
         </div>
         <div className="roulette-container">
-
           <input type="button" value="spin" onClick={this.handleOnClick} className="button" id={this.props.options[0].substring(0,3).trim()} />
-          
         </div>
       </div>
     );
