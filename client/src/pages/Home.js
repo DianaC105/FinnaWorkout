@@ -28,16 +28,19 @@ state = {
       chestWorkouts: [],
       backWorkouts: [],
       absWorkouts: [],
+      legsWorkouts:[],
       muscleGroups: [],
       chestOptionNames: [],
       backOptionNames: [],
       absOptionNames: [],
-      mapObjects: ["chest", "back", "abs"],
+      legsOptionNames: [],
+      mapObjects: ["chest", "back", "abs", "legs"],
       chosenId: [],
       chosenWorkOut: [],
       chosenChest: "",
       chosenBack: "",
-      chosenAbs: ""
+      chosenAbs: "",
+      chosenLegs: ""
 };
 
 
@@ -47,24 +50,28 @@ state = {
       let chestArray = this.filterBodyParts(this.state.workouts, "chest");
       let backArray = this.filterBodyParts(this.state.workouts, "back");
       let absArray = this.filterBodyParts(this.state.workouts, "abs");
+      let legsArray = this.filterBodyParts(this.state.workouts, "legs")
       this.setState({
         chestWorkouts: chestArray,
         backWorkouts: backArray,
         absWorkouts: absArray,
+        legsWorkouts: legsArray
       }, () => {
         console.log(this.state);
         console.log(this.state.chestWorkouts);
         this.updateWorkoutsByBodyPart(this.state.chestWorkouts);
         this.updateWorkoutsByBodyPart(this.state.backWorkouts);
         this.updateWorkoutsByBodyPart(this.state.absWorkouts);
+        this.updateWorkoutsByBodyPart(this.state.legsWorkouts);
       })
         
         let muscleGroupsArr = []
 
-      let {chestWorkouts, backWorkouts, absWorkouts} = this.state;
+      let {chestWorkouts, backWorkouts, absWorkouts, legsWorkouts} = this.state;
       muscleGroupsArr.push(chestWorkouts);
       muscleGroupsArr.push(backWorkouts);
       muscleGroupsArr.push(absWorkouts);
+      muscleGroupsArr.push(legsWorkouts);
 
       this.setState({
         muscleGroups: muscleGroupsArr
@@ -76,6 +83,7 @@ state = {
       let chestWorkouts = [];
       let backWorkouts = [];
       let absWorkouts = [];
+      let legsWorkouts = [];
       
       objects.forEach(object => {
         if (object.bodyPart === "chest") {
@@ -97,41 +105,49 @@ state = {
           },
            () => {console.log(this.state.absOptionNames); })
         }
+        else if (object.bodyPart === "legs"){
+          legsWorkouts.push(object.name);
+          this.setState({
+            legsOptionNames: legsWorkouts
+          },
+           () => {console.log(this.state.absOptionNames); })
+        }
       })
       console.log(chestWorkouts);
       console.log(backWorkouts)
       console.log(absWorkouts)
+      console.log(legsWorkouts)
     }
 
-    setChosenWorkOut = workout => {
-      // let a = this.state.arr.slice();
-      // a[workout] = "random element";
-      this.setState({ 
-        chosenWorkOut: workout
-       });
+    // setChosenWorkOut = workout => {
+    //   // let a = this.state.arr.slice();
+    //   // a[workout] = "random element";
+    //   this.setState({ 
+    //     chosenWorkOut:workout
+    //    });
       
-      // this.setState({ chosenChest:chestWorkouts})
-      // this.setState({chosenBack:backWorkouts})
-      // this.setState({chosenAbs:absWorkouts})
+    //   this.setState({ chosenChest:this.state.chestWorkouts})
+    //   this.setState({chosenBack:this.state.backWorkouts})
+    //   this.setState({chosenAbs:this.state.absWorkouts})
+    // }
+
+    handleOnComplete = (chosenWorkOut) => {
+      console.log('add to array', )
+      console.log('workout chosen by roulette gods', chosenWorkOut)
+      this.setState({
+        chosenId: 123,
+        chosenWorkOut: [...this.state.chosenWorkOut, " ", chosenWorkOut],
+        chosenChest: chosenWorkOut,
+        chosenBack : chosenWorkOut,
+        chosenAbs: chosenWorkOut,
+        chosenLegs: chosenWorkOut
+      });
+        if(chosenWorkOut === 'xyz'){
+          
+        }
+
     }
 
-    handleOnComplete = () => {
-      for (let i = 0; i < this.state.workouts.length; i++ ){
-        const {workoutName,bodyPart,id} = this.state.workouts[i]
-        const chest = bodyPart[0]
-        const back = bodyPart[1]
-        const abs = bodyPart[2]
-        if(workoutName === this.state.chosenWorkOut){
-          this.setState({
-            chosenId: id,
-            chosenChest: chest,
-            chosenBack : back,
-            chosenAbs: abs
-          })
-        }
-      }
-    }
-     
     // componentWillMount(){
     //   console.log("mounting")
     //   this.getWorkouts() 
@@ -194,6 +210,8 @@ state = {
         return this.state.backOptionNames;
       } else if (object === "abs") {
         return this.state.absOptionNames;
+      } else if (object === "legs"){
+        return this.state.legsOptionNames;
       }
     }
     renderRoulette = () => {
@@ -205,6 +223,7 @@ state = {
         return(
           <div>
           <Roulette 
+
             options = {this.state.chestOptionNames}
             setChosenWorkOut={this.setChosenWorkOut}
             onComplete={this.handleOnComplete}
@@ -219,6 +238,11 @@ state = {
            setChosenWorkOut={this.setChosenWorkOut}
             onComplete={this.handleOnComplete}
            />
+           <Roulette
+           options = {this.state.legsOptionNames}
+           setChosenWorkOut={this.setChosenWorkOut}
+            onComplete={this.handleOnComplete}
+           />
           </div>
         )
       } else{
@@ -227,29 +251,45 @@ state = {
     }
     renderResCard = () => {
       if(this.state.chosenWorkOut.length > 0){
+        for (let i = 0; i <= this.state.chosenWorkOut.length; i++) {
+          // go through array of objects
+          // at each object, identify which body part category
+          // set property of result card to that category
+          // assign value of property to the workout within that object
+
+          /* ex: {
+            bodyPart: 'chest', (this is attached to wheel)
+            workOut: 'Bench Press' (this is selected when wheel stops)
+          }
+          */
+
+          // chosenWorkOut[i].bodyPart
+          // chosenWorkOut[i].workOut
+                }
         return(
           <ResultCard
-          chosenChest={this.state.chosenWorkOut}
-          chosenBack={this.state.chosenWorkOut}
-          chosenAbs={this.state.chosenWorkOut}
+          chosenChest={this.state.chosenWorkOut[1]}
+          chosenBack={this.state.chosenWorkOut[3]}
+          chosenAbs={this.state.chosenWorkOut[5]}
+          chosenLegs={this.state.chosenWorkOut[7]}
           />)
       } else {
-        return false;
+        return false
       }
     }
-    
-      superClick = () =>{
+    superClick = () =>{
       let b1 = document.getElementById('Bar');
       let b2 = document.getElementById('Se');
       let b3 = document.getElementById('Tuc');
+      let b4 = document.getElementById('Sqa');
       b1.click();
       b2.click();
       b3.click();
+      b4.click();
 
     }
 
     render(){
-
       if(!this.state.isLoggedIn){
         return <Redirect to = "/login"/>
       }
@@ -277,5 +317,6 @@ state = {
     )
   }
 }
+
 
 
