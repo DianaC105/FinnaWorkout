@@ -44,7 +44,7 @@ class Roulette extends React.Component {
   }
 
   byte2Hex(n) {
-    const nybHexString = '0123456789ABCDEF';
+    const nybHexString = '7c9a34C23';
     return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
   }
 
@@ -129,7 +129,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
       ctx.strokeStyle = 'white';
       ctx.lineWidth = 2;
       
-      ctx.font = ' bold 18px Space Mono';
+      ctx.font = '20px Work Sans, sans-serif';
       
       for(let i = 0; i < options.length; i++) {
         const angle = startAngle + i * arc;
@@ -155,7 +155,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
         // console.log(this.midPointArray(options,i),"Is this function being called")
       }
       //Arrow
-      ctx.fillStyle = 'yellow';
+      ctx.fillStyle = 'Yellow';
       ctx.beginPath();
       ctx.lineTo(baseSize + 10, baseSize - (outsideRadius + 20));
       ctx.lineTo(baseSize + 0, baseSize - (outsideRadius - 5));
@@ -202,7 +202,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
     const arcd = arc * 180 / Math.PI;
     const index = Math.floor((360 - degrees % 360) / arcd);
     ctx.save();
-    ctx.font = 'bold 30px Space Mono monospace';
+    ctx.font = '35px Russo One, sans-serif';
     const text = options[index]
     console.log(text, "is the the final output");
     ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, baseSize / 3);
@@ -232,7 +232,14 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
           </canvas>
         </div>
         <div className="roulette-container">
-          <input type="button" value="spin" onClick={this.handleOnClick} className="button" id={this.props.options[0].substring(0,3).trim()} />
+        
+                    <div class="button_base b03_skewed_slide_in"onClick={this.handleOnClick} id={this.props.options[0].substring(0,3).trim()}>
+                            <div>Spin</div>
+                            <div></div>
+                            <div>Spin</div>
+                    </div>
+                    
+          {/* <input type="button" value="spin" onClick={this.handleOnClick} className="button" id={this.props.options[0].substring(0,3).trim()} /> */}
         </div>
       </div>
     );

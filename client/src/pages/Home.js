@@ -3,7 +3,6 @@ import {Redirect} from "react-router-dom";
 import API from "../utils/API";
 import Example from "../components/Nav";
 import Wrapper from "../components/Wrapper";
-import Jumbotron from "../components/Jumbotron";
 import Roulette from '../components/Roulette';
 import ResultCard from "../components/ResultCard"
 import "./Homepage.css";
@@ -281,7 +280,7 @@ state = {
       let b1 = document.getElementById('Bar');
       let b2 = document.getElementById('Se');
       let b3 = document.getElementById('Tuc');
-      let b4 = document.getElementById('Sqa');
+      let b4 = document.getElementById('Squ');
       b1.click();
       b2.click();
       b3.click();
@@ -301,14 +300,23 @@ state = {
         <div className = "overlay"></div>
         <Example />
         <Wrapper>
+
         
-        <Jumbotron /> FinnaWorkOUT
         
-        
-        <div>
+        {/* <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" /> */}
+        <div className="button_base b07_3d_double_roll" onClick={this.superClick}>
+        <div>Spin All</div>
+        <div>Spin All</div>
+        <div>Spin All</div>
+        <div>Spin All</div>
+        </div>
+        <div className = "row roulfun">
           {this.renderRoulette()}
+          
+        </div>
+        
+        <div className = "row">
           {this.renderResCard()}
-          <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" />
         </div>
       
         <BarChart />

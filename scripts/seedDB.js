@@ -58,7 +58,7 @@ const workoutSeed = [
     bodyPart: "abs"
   },
   {
-    name:"Sqauts",
+    name:"Squats",
     bodyPart: "legs"
   },
   {
