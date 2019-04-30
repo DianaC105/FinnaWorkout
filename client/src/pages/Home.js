@@ -301,6 +301,7 @@ state = {
         <div className = "overlay"></div>
         <Example />
         <Wrapper>
+        
         <Jumbotron /> FinnaWorkOUT
         
         
@@ -309,7 +310,7 @@ state = {
           {this.renderResCard()}
           <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" />
         </div>
-
+      
         <BarChart />
           
         </Wrapper>
