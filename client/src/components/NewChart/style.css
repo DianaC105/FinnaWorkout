@@ -23,7 +23,7 @@
     margin-right: 0px;  
 }
 
-h1, p {
+.chartHead {
   text-align: center;
   color: black;
 }

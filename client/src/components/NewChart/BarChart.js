@@ -144,8 +144,8 @@ export class BarChart extends Component {
             <div>
                 <div className="content-section introduction">
                     <div className="feature-intro">
-                        <h1>Workout Stats</h1>
-                        <p>Track Your Progress</p>
+                        <h1 className="chartHead">Workout Stats</h1>
+                        <p className="chartHead">Track Your Progress</p>
                     </div>
                 </div>
 
