@@ -35,7 +35,7 @@ passport.deserializeUser(User.deserializeUser());
 //connect to Mongo DB
 mongoose.connect(
 
-	process.env.MONGODB_URI || "mongodb://localhost:27017/finna_db",
+	process.env.MONGODB_URI || "mongodb://user:password123@ds149806.mlab.com:49806/heroku_gqlc1gpm",
 	{ useNewUrlParser: true },
 	
 )
