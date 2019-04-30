@@ -300,6 +300,7 @@ state = {
         <div className = "overlay"></div>
         <Example />
         <Wrapper>
+
         
         
         {/* <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" /> */}
@@ -317,7 +318,7 @@ state = {
         <div className = "row">
           {this.renderResCard()}
         </div>
-
+      
         <BarChart />
           
         </Wrapper>

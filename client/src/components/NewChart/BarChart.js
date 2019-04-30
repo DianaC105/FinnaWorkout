@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { Chart } from 'primereact/chart';
 import API from '../../utils/API';
+import "./style.css";
 
 
 export class BarChart extends Component {
     state = {
         chest: 0,
         abs: 0,
-        back: 0
+        back: 0,
+        legs: 0
     };
 
     componentDidMount() {
@@ -32,37 +34,38 @@ export class BarChart extends Component {
         //make an object reflects state with values to send to database
 
         //change it to this.state.chest
-        // this.sendStats();
+
 
     };
 
     sendStats = () => {
-        let statsObject = { Chest: this.state.chest, Abs: this.state.abs, Back: this.state.back }
+        let statsObject = { Chest: this.state.chest, Abs: this.state.abs, Back: this.state.back, Legs: this.state.legs }
         API.updateStats(statsObject)
             .then(res => {
                 console.log("this works!")
-             
+
             })
     }
     getDataBase = () => {
         API.getStats()
             .then(res => {
-            if (res.data.length > 0) {
-                console.log(res.data);
-                let stats = res.data
-                console.log(stats[stats.length - 1]);
-                stats = stats[stats.length - 1]
-                this.setState({
-                    chest: stats.Chest,
-                    abs: stats.Abs,
-                    back: stats.Back
-                })
-            }
+                if (res.data.length > 0) {
+                    console.log(res.data);
+                    let stats = res.data
+                    console.log(stats[stats.length - 1]);
+                    stats = stats[stats.length - 1]
+                    this.setState({
+                        chest: stats.Chest,
+                        abs: stats.Abs,
+                        back: stats.Back,
+                        legs: stats.Legs
+                    })
+                }
             })
 
     }
     updateDataBase = () => {
-        let statsObject = { Chest: 3, Abs: 6, Back: 2 }
+        let statsObject = { Chest: 3, Abs: 6, Back: 2, Legs: 5 }
         API.updateStats(statsObject)
             .then(res => {
                 console.log("this works!")
@@ -80,12 +83,12 @@ export class BarChart extends Component {
     render() {
         console.log(this.state);
         const data = {
-            labels: ['Chest', 'Abs', 'Back'],
+            labels: ['Chest', 'Abs', 'Back', "Legs"],
             datasets: [
                 {
                     label: 'Workouts',
                     backgroundColor: 'purple',
-                    data: [this.state.chest, this.state.abs, this.state.back]
+                    data: [this.state.chest, this.state.abs, this.state.back, this.state.legs]
                 }
             ]
         };
@@ -103,7 +106,7 @@ export class BarChart extends Component {
                     id: 'y-axis-1',
                     ticks: {
                         min: 0,
-                        max: 30
+                        max: 50
                     }
                 }]
             }
@@ -111,8 +114,27 @@ export class BarChart extends Component {
 
         const btnStyle = {
             backgroundColor: "green",
-            padding: 5,
-            margin: 100
+            padding: 7,
+            borderColor: "black"
+            //display: "flex",
+            //flexDirection: "column",
+            //justifyContent: "center"
+            // margin: 100,
+            //position: "relative",
+
+
+
+        }
+
+        const chartStyle = {
+            position: "relative",
+            backgroundColor: "black",
+            color: "purple",
+            margin: 0,
+
+
+
+
 
 
         }
@@ -123,28 +145,27 @@ export class BarChart extends Component {
                 <div className="content-section introduction">
                     <div className="feature-intro">
                         <h1>Workout Stats</h1>
-                        <p>See Your Progress</p>
+                        <p>Track Your Progress</p>
                     </div>
                 </div>
 
                 <div className="content-section implementation">
                     {/* Chart goes here */}
-                    <Chart type="bar" data={data} options={multiAxisOptions} />
-
-                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
+                    <Chart type="bar" style={chartStyle} data={data} options={multiAxisOptions} />
+                    <button color="success" id="btn1" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("abs")} > Abs Completed <i className="fas fa-dumbbell"></i>
+                    <button color="success" id="btn2" style={btnStyle} onClick={() => this.handleIncrement("abs")} > Abs Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("back")} > Back Completed <i className="fas fa-dumbbell"></i>
+                    <button color="success" id="btn3" style={btnStyle} onClick={() => this.handleIncrement("back")} > Back Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-                    {/* <button color="success" style={btnStyle} onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
+                    <button color="success" id="btn4" style={btnStyle} onClick={() => this.handleIncrement("legs")} > Legs Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
-                    <button color="success" style={btnStyle} onClick={() => this.handleIncrement("booty")} > Booty Completed <i className="fas fa-dumbbell"></i>
+                    {/* <button color="success" style={btnStyle} onClick={() => this.handleIncrement("booty")} > Booty Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "} */}
 
                 </div>
 
-            </div>
+            </div >
 
         )
     }
