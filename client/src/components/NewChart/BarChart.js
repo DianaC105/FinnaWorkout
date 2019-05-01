@@ -128,7 +128,8 @@ export class BarChart extends Component {
 
         const chartStyle = {
             position: "relative",
-            backgroundColor: "black",
+            backgroundColor: "white",
+            opacity: 0.6,
             color: "purple",
             margin: 0,
 
