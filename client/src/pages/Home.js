@@ -132,8 +132,8 @@ state = {
     // }
 
     handleOnComplete = (chosenWorkOut) => {
-      console.log('add to array', )
-      console.log('workout chosen by roulette gods', chosenWorkOut)
+      // console.log('add to array', )
+      // console.log('workout chosen by roulette gods', chosenWorkOut)
       this.setState({
         chosenId: 123,
         chosenWorkOut: [...this.state.chosenWorkOut, " ", chosenWorkOut],
@@ -145,7 +145,7 @@ state = {
         if(chosenWorkOut === 'xyz'){
           
         }
-
+        console.log(this)
     }
 
     // componentWillMount(){
@@ -216,8 +216,8 @@ state = {
     }
     renderRoulette = () => {
     
-      console.log("render attempt");
-      console.log(this.state.chestOptionNames);
+      // console.log("render attempt");
+      // console.log(this.state.chestOptionNames);
       if(this.state.chestOptionNames.length > 0){
         
         return(
@@ -278,16 +278,22 @@ state = {
       }
     }
     superClick = () =>{
-      let b1 = document.getElementById('Bar');
-      let b2 = document.getElementById('Se');
-      let b3 = document.getElementById('Tuc');
-      let b4 = document.getElementById('Squ');
-      b1.click();
-      b2.click();
-      b3.click();
-      b4.click();
+      this.setState({chosenWorkOut: []}, () => {
+
+        let b1 = document.getElementById('Bar');
+        let b2 = document.getElementById('Se');
+        let b3 = document.getElementById('Tuc');
+        let b4 = document.getElementById('Squ');
+        b1.click();
+        b2.click();
+        b3.click();
+        b4.click();
+      })
+
 
     }
+
+    
 
     render(){
       if(!this.state.isLoggedIn){
