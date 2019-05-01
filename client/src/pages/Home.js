@@ -9,6 +9,7 @@ import "./Homepage.css";
 //import Form from "../components/Form"
 //import Workoutpick from "../components/WorkoutCard";
 import BarChart from "../components/NewChart/BarChart";
+import Footer from "../components/Footer/Footer";
 
 
 
@@ -22,7 +23,7 @@ state = {
       workouts: [],
       apiData: [],
       plan: [],
-      message: "Putting togeather you're plan now",
+      message: "Putting together your plan now",
       q:"",
       chestWorkouts: [],
       backWorkouts: [],
@@ -320,8 +321,12 @@ state = {
         </div>
       
         <BarChart />
+        
           
         </Wrapper>
+
+       <br></br>
+        <Footer />
       </div>
     )
   }

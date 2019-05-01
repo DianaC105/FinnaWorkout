@@ -44,12 +44,13 @@ class Example extends React.Component {
                 <NavLink href="/logout/">Logout</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink href="https://github.com/DianaC105/FinnaWorkout.git" target="blank"> GitHub{" "}
+                  <i class="fab fa-github"></i></NavLink>
               </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
-      </div>
+      </div >
     );
   }
 }
