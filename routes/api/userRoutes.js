@@ -47,4 +47,6 @@ router
       .route('/register')
       .post(userController.register);
 
+    //workout stats route
+    
     module.exports = router;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import API from "../utils/API";
+import "./landing.css";
 
 class Login extends Component {
   state = {
@@ -39,7 +40,8 @@ class Login extends Component {
     return (
       <div>
         <Navbar />
-      
+        <div className="backlay1"></div>
+        <div className="overlay"></div>
       <div className="container my-5">
         <div className="row justify-content-center">
           <form>

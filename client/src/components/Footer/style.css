@@ -1,0 +1,16 @@
+.foot {
+    
+    background-color: black;
+    text-align: center;
+    justify-content: center;
+    color: rgb(107, 103, 107);
+    height: 40px;
+    margin: 0px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.fa-github {
+    color: rgb(16, 231, 231);
+    padding: 5px;
+}

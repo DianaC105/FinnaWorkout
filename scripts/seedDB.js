@@ -58,8 +58,20 @@ const workoutSeed = [
     bodyPart: "abs"
   },
   {
-    name: "The Hokie Pokie",
-    bodyPart: "Anything you can shake about"
+    name:"Squats",
+    bodyPart: "legs"
+  },
+  {
+    name:"Lunges",
+    bodyPart: "legs"
+  },
+  {
+    name:"Calf raise",
+    bodyPart: "legs"
+  },
+  {
+    name: "Glute Bridge Walkout",
+    bodyPart: "legs"
   }
 ];
 db.Workout.remove({})

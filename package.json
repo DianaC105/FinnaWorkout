@@ -37,7 +37,11 @@
     "reactstrap": "^8.0.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "file-loader": "^3.0.1",
     "url-loader": "^1.1.2"
+=======
+    "file-loader": "^3.0.1"
+>>>>>>> c29b68852ee35e2361c4a6736b45f8110ef903fd
   }
 }
