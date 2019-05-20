@@ -23,6 +23,10 @@
     margin-right: 0px;  
 }
 
+.chartHead {
+  text-align: center;
+  color: black;
+}
 
 
 @media only screen and (max-width: 450px) {
