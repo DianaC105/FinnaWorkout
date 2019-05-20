@@ -1,0 +1,30 @@
+// render from results card
+render() {
+    // const { errors } = this.state;
+    return (
+      <div className="container">
+        <div className="card my-3 mx-auto">
+          <i className="fas fa-star" id="favorite" onClick={this.addClass} />
+          <div className="row">
+           
+            <div className="col-sm-9">
+              <h2 className="ml-sm-3 mt-3 text-center text-sm-left">Heres your plan</h2>
+                {this.props.textValue === "chest" ? <img src={this.state.chosenURL[0]} alt=""/> : null}
+                {this.props.textValue === "back" ? <img src={this.state.chosenURL[1]} alt="" /> : null}
+                {this.props.textValue === "abs" ? <img src={this.state.chosenURL[2]} alt="" /> : null}
+                {this.props.textValue === "legs" ? <img src={this.state.chosenURL[3]} alt="" /> : null}
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+}
+
+// turnary code from roulette wheel to start outputting gifs from data from back end when workouts are decided on wheels.
+{
+          this.state.textValue !== "" ? null : <ResultsCard textValue={this.state.textValue} />
+        }
+
+

@@ -30,7 +30,7 @@ class ResultCard extends Component {
           <div className="row">
            
             <div className="col-sm-9">
-              <h2 className="ml-sm-3 mt-3 text-center text-sm-left">Heres your plan}</h2>
+              <h2 className="ml-sm-3 mt-3 text-center text-sm-left">Here's your plan</h2>
               <ul className="list-group list-group-flush mx-3 ml-sm-0 mr-sm-3">
                 <li className="list-group-item">
                   <b>Chest:</b> {this.props.chosenChest}

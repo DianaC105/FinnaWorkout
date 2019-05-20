@@ -38,7 +38,7 @@ class Roulette extends React.Component {
   };
 
   componentDidMount() {
-    console.log("is this Mounted")
+    // console.log("is this Mounted")
     this.drawRouletteWheel();
     
   }
@@ -188,7 +188,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
       })
     }
 
-    console.log('state within rotate', this.state);
+    // console.log('state within rotate', this.state);
   }
 
   stopRotateWheel() {
@@ -222,7 +222,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { baseSize } = this.props;
 
     return (
