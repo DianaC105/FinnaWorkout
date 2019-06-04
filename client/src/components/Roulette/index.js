@@ -233,7 +233,7 @@ wordWrap(context, text, x, y, lineHeight, fitWidth) {
         </div>
         <div className="roulette-container">
         
-                    <div class="button_base b03_skewed_slide_in"onClick={this.handleOnClick} id={this.props.options[0].substring(0,3).trim()}>
+                    <div className="button_base b03_skewed_slide_in"onClick={this.handleOnClick} id={this.props.options[0].substring(0,3).trim()}>
                             <div>Spin</div>
                             <div></div>
                             <div>Spin</div>

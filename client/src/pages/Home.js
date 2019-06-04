@@ -280,9 +280,9 @@ state = {
     superClick = () =>{
       this.setState({chosenWorkOut: []}, () => {
 
-        let b1 = document.getElementById('Bar');
-        let b2 = document.getElementById('Se');
-        let b3 = document.getElementById('Tuc');
+        let b1 = document.getElementById('Spi');
+        let b2 = document.getElementById('Bow');
+        let b3 = document.getElementById('Bic');
         let b4 = document.getElementById('Squ');
         b1.click();
         b2.click();
