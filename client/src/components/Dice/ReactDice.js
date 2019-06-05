@@ -25,9 +25,9 @@ class ReactDice extends Component {
     disableIndividual: false,
     margin: 15,
     position: 'relative',
-    // display: 'flex',
-    // alignContent: 'center',
-    
+    display: 'flex',
+    alignContent: 'center',
+    justifyContent: 'center',
     numDice: 4,
     sides: 6,
     rollTime: 2,

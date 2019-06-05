@@ -1,7 +1,8 @@
 import React from 'react';
 //import logo from './logo.svg';
-//import './App.css';
+import './style.css';
 //import Die from "./Die";
+
 import ReactDice from "./ReactDice";
 
 
@@ -9,13 +10,19 @@ class DiceApp extends React.Component {
 
   render() {
     return (
+      <div className="roll">
+        Roll Dice for # of Reps
+      
       <div>
-                    
+                   
         <ReactDice
+        
+        className="diceapp"
           numDice={2}
           rollDone={this.rollDoneCallback}
           ref={dice => this.reactDice = dice}
         />
+      </div>
       </div>
     )
   }

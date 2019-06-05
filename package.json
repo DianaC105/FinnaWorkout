@@ -36,6 +36,7 @@
     "react-dice": "^1.0.1",
     "react-dice-complete": "^1.0.2",
     "react-dom": "^16.8.6",
+    "react-responsive-modal": "^4.0.1",
     "react-router-dom": "^5.0.0",
     "reactstrap": "^8.0.0"
   },
