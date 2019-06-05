@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Modal from "react-responsive-modal";
 
 
+
 class ResultCard extends Component {
   constructor() {
     super();
@@ -49,10 +50,11 @@ class ResultCard extends Component {
               <h2 className="ml-sm-3 mt-3 text-center text-sm-left">Here's your plan</h2>
               <ul className="list-group list-group-flush mx-3 ml-sm-0 mr-sm-3">
                 <li className="list-group-item" onClick={(event) => this.onOpenModal(event, this.props.chosenChest)}>
-
+                
 
                   <b>Chest:</b> {this.props.chosenChest}
                 </li>
+                
                 <Modal open={modalOpen} onClose={this.onCloseModal} center>
                   <h2>Success</h2>
                   <p>
