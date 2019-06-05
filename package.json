@@ -38,6 +38,7 @@
     "react-dom": "^16.8.6",
     "react-responsive-modal": "^4.0.1",
     "react-router-dom": "^5.0.0",
+    "react-toastify": "^5.2.1",
     "reactstrap": "^8.0.0"
   },
   "devDependencies": {

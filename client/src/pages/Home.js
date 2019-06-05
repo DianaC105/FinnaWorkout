@@ -43,7 +43,12 @@ state = {
       chosenChest: "",
       chosenBack: "",
       chosenAbs: "",
-      chosenLegs: ""
+      chosenLegs: "",
+      chosenGif: [],
+      chestGif: "",
+      backGif: "",
+      absGif: "",
+      legsGif: ""
 };
 
 
@@ -87,26 +92,43 @@ state = {
       let backWorkouts = [];
       let absWorkouts = [];
       let legsWorkouts = [];
+      let chestGifs =[];
+      let backGifs = [];
+      let absGifs = [];
+      let legsGifs = [];
       
       objects.forEach(object => {
         if (object.bodyPart === "chest") {
           chestWorkouts.push(object.name);
           this.setState({
             chestOptionNames: chestWorkouts
-          }, () => {console.log(this.state.chestOptionNames); })
+          }, () => {console.log(this.state.chestOptionNames); });
+          chestGifs.push(object.gifUrl);
+          this.setState({
+            chestGif: chestGifs
+          }, () => {console.log(this.state.chestGif); })
         }
         else if (object.bodyPart === "back") {
           backWorkouts.push(object.name);
           this.setState({
             backOptionNames: backWorkouts
-          }, () => {console.log(this.state.backOptionNames); })
+          }, () => {console.log(this.state.backOptionNames); });
+          backGifs.push(object.gifUrl);
+          this.setState({
+            backGif: backGifs
+          }, () => {console.log(this.state.backGif); })
         }
         else if (object.bodyPart === "abs"){
           absWorkouts.push(object.name);
           this.setState({
             absOptionNames: absWorkouts
           },
-           () => {console.log(this.state.absOptionNames); })
+           () => {console.log(this.state.absOptionNames); });
+           absGifs.push(object.gifUrl);
+          this.setState({
+            absGif: absGifs
+          },
+           () => {console.log(this.state.absGif); })
         }
         else if (object.bodyPart === "legs"){
           legsWorkouts.push(object.name);
@@ -114,6 +136,11 @@ state = {
             legsOptionNames: legsWorkouts
           },
            () => {console.log(this.state.absOptionNames); })
+           legsGifs.push(object.gifUrl);
+          this.setState({
+            legsGif: legsGifs
+          },
+           () => {console.log(this.state.absGif); })
         }
       })
       console.log(chestWorkouts);
@@ -133,18 +160,39 @@ state = {
     //   this.setState({chosenBack:this.state.backWorkouts})
     //   this.setState({chosenAbs:this.state.absWorkouts})
     // }
+    findGif = (wname) => {
+      for( var i = 0; i < this.state.chestWorkouts.length; i++){
+        if(wname === this.state.chestWorkouts[i].name){
+          this.setState({chestGif: this.state.chestWorkouts[i].gifUrl});
+        }
+        if(wname === this.state.absWorkouts[i].name){
+          this.setState({absGif: this.state.absWorkouts[i].gifUrl});
+        }
+        if(wname === this.state.backWorkouts[i].name){
+          this.setState({backGif: this.state.backWorkouts[i].gifUrl});
+        }
+        if(wname === this.state.legsWorkouts[i].name){
+          this.setState({legsGif: this.state.legsWorkouts[i].gifUrl});
+        }
+      }
+
+    };
 
     handleOnComplete = (chosenWorkOut) => {
       // console.log('add to array', )
       // console.log('workout chosen by roulette gods', chosenWorkOut)
+      this.findGif(chosenWorkOut);
+      
       this.setState({
         chosenId: 123,
         chosenWorkOut: [...this.state.chosenWorkOut, " ", chosenWorkOut],
+        //chosenGif: [...this.state.chosenGif," ", chosenGif],
         chosenChest: chosenWorkOut,
         chosenBack : chosenWorkOut,
         chosenAbs: chosenWorkOut,
         chosenLegs: chosenWorkOut
       });
+
         if(chosenWorkOut === 'xyz'){
           
         }
@@ -177,9 +225,9 @@ state = {
         .catch(err => {
           console.log(err);
           this.setState({isLoggedIn: false})
-        })
+        });
 
-    }
+    };
     
     filterBodyParts(array,bodyPart){
       return array.filter(workout => workout.bodyPart === bodyPart )
@@ -270,6 +318,7 @@ state = {
 
           // chosenWorkOut[i].bodyPart
           // chosenWorkOut[i].workOut
+          
                 }
         return(
           <ResultCard
@@ -277,6 +326,10 @@ state = {
           chosenBack={this.state.chosenWorkOut[3]}
           chosenAbs={this.state.chosenWorkOut[5]}
           chosenLegs={this.state.chosenWorkOut[7]}
+          chestg = {this.state.chestGif}
+          backg = {this.state.backGif}
+          absg = {this.setState.absGif}
+          legg= {this.state.legsGif}
           />)
       } else {
         return false
@@ -353,6 +406,10 @@ state = {
     )
   }
 }
+
+
+
+
 
 
 

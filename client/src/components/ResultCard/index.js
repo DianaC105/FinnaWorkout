@@ -13,7 +13,8 @@ class ResultCard extends Component {
       chosenLegs: "",
       error: {},
       modalOpen: false,
-      activeModalType: ""
+      activeModalType: "",
+      agifurl:""
 
 
     };
@@ -26,11 +27,14 @@ class ResultCard extends Component {
     e.target.classList.add("click");
   };
 
-  onOpenModal = (event, target) => {
+  onOpenModal = (event, target, gifu) => {
     console.log("target: "+ target);
     this.setState({ modalOpen: true });
     this.setState({ activeModalType: target});
+    this.setState({ agifurl: gifu })
     console.log(this.state.activeModalType);
+    console.log(this.state.chosenChest);
+    
   };
 
   onCloseModal = () => {
@@ -49,27 +53,27 @@ class ResultCard extends Component {
             <div className="col-sm-9">
               <h2 className="ml-sm-3 mt-3 text-center text-sm-left">Here's your plan</h2>
               <ul className="list-group list-group-flush mx-3 ml-sm-0 mr-sm-3">
-                <li className="list-group-item" onClick={(event) => this.onOpenModal(event, this.props.chosenChest)}>
-                
+
+                <li className="list-group-item" onClick={(event) => this.onOpenModal(event, this.props.chosenChest, this.props.chestg)}>
 
                   <b>Chest:</b> {this.props.chosenChest}
                 </li>
                 
                 <Modal open={modalOpen} onClose={this.onCloseModal} center>
-                  <h2>Success</h2>
+                  <h2>Workout: {this.state.activeModalType}</h2>
                   <p>
-                    Issa Open Now testestest123
-                    Lorem ipsum dolor sit amet, cons
-                    {this.state.activeModalType}
+                    Perform this exercise until you can't anymore.
+                    {this.state.agifurl}
                    </p>
+                   <img src = {this.state.agifurl}/>
                 </Modal>
-                <li className="list-group-item" onClick={(event) => this.onOpenModal(event, this.props.chosenBack)}>
+                <li className="list-group-item" onClick={(event) => this.onOpenModal(event, this.props.chosenBack, this.props.backg)}>
                   <b>Back</b> {this.props.chosenBack}
                 </li>
-                <li className="list-group-item" onClick={(event) => this.onOpenModal(event, this.props.chosenAbs)}>
+                <li className="list-group-item" onClick={(event) => this.onOpenModal(event, this.props.chosenAbs, this.props.absg)}>
                   <b>Abs</b> {this.props.chosenAbs}
                 </li>
-                <li className="list-group-item" onClick={(event) => this.onOpenModal(event, this.props.chosenLegs)}>
+                <li className="list-group-item" onClick={(event) => this.onOpenModal(event, this.props.chosenLegs, this.props.legg)}>
                   <b>Legs</b> {this.props.chosenLegs}
                 </li>
               </ul>
