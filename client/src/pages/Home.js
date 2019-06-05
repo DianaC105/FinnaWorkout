@@ -10,6 +10,9 @@ import "./Homepage.css";
 //import Workoutpick from "../components/WorkoutCard";
 import BarChart from "../components/NewChart/BarChart";
 import Footer from "../components/Footer/Footer";
+//import Dice from "../components/Dice";
+import DiceApp from "../components/Dice/DiceApp";
+
 
 
 
@@ -271,7 +274,7 @@ state = {
         return(
           <div>
           <Roulette 
-
+            
             options = {this.state.chestOptionNames}
             setChosenWorkOut={this.setChosenWorkOut}
             onComplete={this.handleOnComplete}
@@ -286,10 +289,12 @@ state = {
            setChosenWorkOut={this.setChosenWorkOut}
             onComplete={this.handleOnComplete}
            />
+          
            <Roulette
            options = {this.state.legsOptionNames}
            setChosenWorkOut={this.setChosenWorkOut}
             onComplete={this.handleOnComplete}
+           
            />
           </div>
         )
@@ -361,22 +366,33 @@ state = {
         <Example />
         <Wrapper>
 
+      
+
         
-        
+       
         {/* <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" /> */}
         <div className="button_base b07_3d_double_roll" onClick={this.superClick}>
-        <div>Spin All</div>
+        <div>Spin All</div> 
         <div>Spin All</div>
         <div>Spin All</div>
         <div>Spin All</div>
         </div>
+         
         <div className = "row roulfun">
+      
           {this.renderRoulette()}
-          
+        
         </div>
         
+        
         <div className = "row">
+       
           {this.renderResCard()}
+          
+          
+          
+
+          <DiceApp />
         </div>
       
         <BarChart />
