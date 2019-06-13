@@ -10,6 +10,9 @@ import "./Homepage.css";
 //import Workoutpick from "../components/WorkoutCard";
 import BarChart from "../components/NewChart/BarChart";
 import Footer from "../components/Footer/Footer";
+//import Dice from "../components/Dice";
+import DiceApp from "../components/Dice/DiceApp";
+
 
 
 
@@ -40,7 +43,12 @@ state = {
       chosenChest: "",
       chosenBack: "",
       chosenAbs: "",
-      chosenLegs: ""
+      chosenLegs: "",
+      chosenGif: [],
+      chestGif: "",
+      backGif: "",
+      absGif: "",
+      legsGif: ""
 };
 
 
@@ -84,26 +92,43 @@ state = {
       let backWorkouts = [];
       let absWorkouts = [];
       let legsWorkouts = [];
+      let chestGifs =[];
+      let backGifs = [];
+      let absGifs = [];
+      let legsGifs = [];
       
       objects.forEach(object => {
         if (object.bodyPart === "chest") {
           chestWorkouts.push(object.name);
           this.setState({
             chestOptionNames: chestWorkouts
-          }, () => {console.log(this.state.chestOptionNames); })
+          }, () => {console.log(this.state.chestOptionNames); });
+          chestGifs.push(object.gifUrl);
+          this.setState({
+            chestGif: chestGifs
+          }, () => {console.log(this.state.chestGif); })
         }
         else if (object.bodyPart === "back") {
           backWorkouts.push(object.name);
           this.setState({
             backOptionNames: backWorkouts
-          }, () => {console.log(this.state.backOptionNames); })
+          }, () => {console.log(this.state.backOptionNames); });
+          backGifs.push(object.gifUrl);
+          this.setState({
+            backGif: backGifs
+          }, () => {console.log(this.state.backGif); })
         }
         else if (object.bodyPart === "abs"){
           absWorkouts.push(object.name);
           this.setState({
             absOptionNames: absWorkouts
           },
-           () => {console.log(this.state.absOptionNames); })
+           () => {console.log(this.state.absOptionNames); });
+           absGifs.push(object.gifUrl);
+          this.setState({
+            absGif: absGifs
+          },
+           () => {console.log(this.state.absGif); })
         }
         else if (object.bodyPart === "legs"){
           legsWorkouts.push(object.name);
@@ -111,6 +136,11 @@ state = {
             legsOptionNames: legsWorkouts
           },
            () => {console.log(this.state.absOptionNames); })
+           legsGifs.push(object.gifUrl);
+          this.setState({
+            legsGif: legsGifs
+          },
+           () => {console.log(this.state.absGif); })
         }
       })
       console.log(chestWorkouts);
@@ -130,18 +160,39 @@ state = {
     //   this.setState({chosenBack:this.state.backWorkouts})
     //   this.setState({chosenAbs:this.state.absWorkouts})
     // }
+    findGif = (wname) => {
+      for( var i = 0; i < this.state.chestWorkouts.length; i++){
+        if(wname === this.state.chestWorkouts[i].name){
+          this.setState({chestGif: this.state.chestWorkouts[i].gifUrl});
+        }
+        if(wname === this.state.absWorkouts[i].name){
+          this.setState({absGif: this.state.absWorkouts[i].gifUrl});
+        }
+        if(wname === this.state.backWorkouts[i].name){
+          this.setState({backGif: this.state.backWorkouts[i].gifUrl});
+        }
+        if(wname === this.state.legsWorkouts[i].name){
+          this.setState({legsGif: this.state.legsWorkouts[i].gifUrl});
+        }
+      }
+
+    };
 
     handleOnComplete = (chosenWorkOut) => {
       // console.log('add to array', )
       // console.log('workout chosen by roulette gods', chosenWorkOut)
+      this.findGif(chosenWorkOut);
+      
       this.setState({
         chosenId: 123,
         chosenWorkOut: [...this.state.chosenWorkOut, " ", chosenWorkOut],
+        //chosenGif: [...this.state.chosenGif," ", chosenGif],
         chosenChest: chosenWorkOut,
         chosenBack : chosenWorkOut,
         chosenAbs: chosenWorkOut,
         chosenLegs: chosenWorkOut
       });
+
         if(chosenWorkOut === 'xyz'){
           
         }
@@ -174,9 +225,9 @@ state = {
         .catch(err => {
           console.log(err);
           this.setState({isLoggedIn: false})
-        })
+        });
 
-    }
+    };
     
     filterBodyParts(array,bodyPart){
       return array.filter(workout => workout.bodyPart === bodyPart )
@@ -223,7 +274,7 @@ state = {
         return(
           <div>
           <Roulette 
-
+            
             options = {this.state.chestOptionNames}
             setChosenWorkOut={this.setChosenWorkOut}
             onComplete={this.handleOnComplete}
@@ -238,10 +289,12 @@ state = {
            setChosenWorkOut={this.setChosenWorkOut}
             onComplete={this.handleOnComplete}
            />
+          
            <Roulette
            options = {this.state.legsOptionNames}
            setChosenWorkOut={this.setChosenWorkOut}
             onComplete={this.handleOnComplete}
+           
            />
           </div>
         )
@@ -265,6 +318,7 @@ state = {
 
           // chosenWorkOut[i].bodyPart
           // chosenWorkOut[i].workOut
+          
                 }
         return(
           <ResultCard
@@ -272,6 +326,10 @@ state = {
           chosenBack={this.state.chosenWorkOut[3]}
           chosenAbs={this.state.chosenWorkOut[5]}
           chosenLegs={this.state.chosenWorkOut[7]}
+          chestg = {this.state.chestGif}
+          backg = {this.state.backGif}
+          absg = {this.setState.absGif}
+          legg= {this.state.legsGif}
           />)
       } else {
         return false
@@ -280,9 +338,9 @@ state = {
     superClick = () =>{
       this.setState({chosenWorkOut: []}, () => {
 
-        let b1 = document.getElementById('Bar');
-        let b2 = document.getElementById('Se');
-        let b3 = document.getElementById('Tuc');
+        let b1 = document.getElementById('Spi');
+        let b2 = document.getElementById('Bow');
+        let b3 = document.getElementById('Bic');
         let b4 = document.getElementById('Squ');
         b1.click();
         b2.click();
@@ -308,22 +366,33 @@ state = {
         <Example />
         <Wrapper>
 
+      
+
         
-        
+       
         {/* <input type="button" value="spin" onClick={this.superClick} className="button" id="spin" /> */}
         <div className="button_base b07_3d_double_roll" onClick={this.superClick}>
-        <div>Spin All</div>
+        <div>Spin All</div> 
         <div>Spin All</div>
         <div>Spin All</div>
         <div>Spin All</div>
         </div>
+         
         <div className = "row roulfun">
+      
           {this.renderRoulette()}
-          
+        
         </div>
         
+        
         <div className = "row">
+       
           {this.renderResCard()}
+          
+          
+          
+
+          <DiceApp />
         </div>
       
         <BarChart />
@@ -337,6 +406,10 @@ state = {
     )
   }
 }
+
+
+
+
 
 
 

@@ -87,7 +87,7 @@ class Example extends React.Component {
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/DianaC105/FinnaWorkout.git" target="blank"> GitHub{" "}
-                  <i class="fab fa-github"></i></NavLink>
+                  <i className="fab fa-github"></i></NavLink>
               </NavItem>
             </Nav>
           </Collapse>

@@ -113,7 +113,6 @@ export class BarChart extends Component {
         }
 
         const btnStyle = {
-            
             padding: 7,
             borderColor: "black"
             //display: "flex",
@@ -121,9 +120,6 @@ export class BarChart extends Component {
             //justifyContent: "center"
             // margin: 100,
             //position: "relative",
-
-
-
         }
 
         const chartStyle = {
@@ -132,12 +128,6 @@ export class BarChart extends Component {
             opacity: 0.6,
             color: "purple",
             margin: 0,
-
-
-
-
-
-
         }
 
         return (
@@ -151,16 +141,22 @@ export class BarChart extends Component {
                 </div>
 
                 <div className="content-section implementation">
+
                     {/* Chart goes here */}
+                    
                     <Chart type="bar" style={chartStyle} data={data} options={multiAxisOptions} />
                     <button color="success" id="btn1" className="btn btn-info" onClick={() => this.handleIncrement("chest")} > Chest Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
+
                     <button color="success" id="btn2" className="btn btn-info" style={btnStyle} onClick={() => this.handleIncrement("abs")} > Abs Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
+
                     <button color="success" id="btn3" className="btn btn-info" style={btnStyle} onClick={() => this.handleIncrement("back")} > Back Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
+
                     <button color="success" id="btn4" className="btn btn-info" style={btnStyle} onClick={() => this.handleIncrement("legs")} > Legs Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "}
+
                     {/* <button color="success" style={btnStyle} onClick={() => this.handleIncrement("booty")} > Booty Completed <i className="fas fa-dumbbell"></i>
                     </button> {"  "} */}
 

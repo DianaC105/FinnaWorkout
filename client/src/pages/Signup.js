@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import API from "../utils/API";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./landing.css";
 
 class Login extends Component {
@@ -29,11 +31,37 @@ class Login extends Component {
 
       })
       .catch(err => console.log(err.response.data));
-  }
+      this.notifyError();
+  };
+
+  notifyError = () => {
+    toast.error("Signup failed. Please try again", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true
+    });
+  };
+
+  notifySuccess = () => {
+    toast.success("Success! Please login with your credentials", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true
+    });
+  };
+
+
 
   render() {
     // If Signup was a success, take them to the Login page
     if (this.state.success) {
+      this.notifySuccess();
       return <Redirect to="/login" />
     }
 
@@ -44,6 +72,18 @@ class Login extends Component {
         <div className="overlay"></div>
       <div className="container my-5">
         <div className="row justify-content-center">
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
+        
           <form>
             <h3>Sign Up!</h3>
             <div className="form-group">
