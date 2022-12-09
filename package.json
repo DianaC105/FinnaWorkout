@@ -21,7 +21,7 @@
     "body-parser": "^1.18.3",
     "chart.js": "^2.8.0",
     "concurrently": "^4.1.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-session": "^1.16.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.4.22",
